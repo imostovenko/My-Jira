@@ -1,0 +1,218 @@
+/* some custom style here to overwrite bootstrap min.css */
+
+/*
+body {
+    position: relative;}
+*/
+
+.navbar-form{
+    margin-right: 15px;}
+
+.jumbotron {
+   font-family: 'Open Sans', sans-serif;
+   /* margin-top: 50px;
+    margin-bottom: 40px; */
+    padding-top: 50px;
+   background-image: url(../images/cat_bgrd.jpg);}
+
+.btn-lg {
+    font-size: 20px;}
+
+
+
+.login-section {
+    background-image: url(../images/018.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    height: 100%;
+    width: 100%}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #cccccc;
+    padding: 10px 20px 50px 20px;
+    margin-top: 20%;
+     /*position: fixed;
+          top: 340px;
+          left: 42%; */
+    }
+
+.footer {
+    margin-left: 10%;
+    color: #ddd;}
+
+.card {
+    background: rgba(252, 252, 252, 0.87);
+    border: 1px solid #cccccc;
+    padding: 5px 10px 10px;
+    margin-bottom: 20px;
+    margin-top: 20px}
+
+.tickets {
+    background: #eee;}
+
+.tt-header{
+    padding-top: 20px;
+    padding-bottom: 20px;}
+
+
+.card-section {
+    margin-bottom: 30px;}
+
+
+.glyphicon {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 17px;}
+
+.glyphicon-pencil {
+    opacity: 0.8;}
+
+
+.form-group.required .control-label:before {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: -10px;
+    top:7px;}
+
+.modal-footer{
+    margin-bottom: -15px;}
+
+.white{
+    color: #fff;}
+
+.red {
+    color: red; }
+
+.orange {
+    color: orange;}
+
+.green {
+    color: #5cb85c;}
+
+.blue {
+    color: #337AB7;}
+
+#hello {
+    margin-top: 42px;}
+
+.bottom-align-text {
+    position: absolute;
+    bottom: 25px;
+  }
+
+.checkbox-inline {
+    font-size: 14px;
+    padding-right: 20px;}
+
+.filter-section{
+    background-color: rgba(192,192,192,0.3);
+    padding-top: 15px;}
+
+.list-group-item {
+    border-size: 0px;
+    text-size: 12px;
+    background-color: rgba(192,192,192,0.3);
+  }
+
+.sub-header {
+    margin-bottom: 20px;}
+
+
+/* MODAL */
+
+.alert {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background: #fff;
+      border-radius: 5px;
+      border-color: red;
+      position: fixed;
+      top: 20px;
+      left: 42%;
+      width: 200px;
+      transition: all 5s ease-in-out;
+      opacity: 0.8;
+      }
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 200ms;
+  opacity: 1;
+  z-index: 10000;
+  }
+
+
+.popup {
+  margin: 10% auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 600px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  box-shadow: 0px 0px 50px 5px black;
+  }
+
+.popup-header {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(229, 229, 229);
+  padding-left: 20px;
+  padding-right: 20px;
+  }
+
+.popup-header h3 {
+  margin-top: 0;
+  }
+
+.popup-header .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  line-height: 0.7;
+  }
+
+.popup .close:hover {
+  color: red;
+  }
+
+.popup-content {
+  max-height: 30%;
+  overflow: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  }
+
+.popup-footer {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(229, 229, 229);
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  }
+
+/* .btn {
+  margin-left: 10px;
+  margin-right: 10px;
+  }
+*/
