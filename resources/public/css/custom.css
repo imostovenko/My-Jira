@@ -124,7 +124,7 @@ body {
 
 /* MODAL */
 
-.alert {
+.alert-error {
       padding-top: 20px;
       padding-bottom: 20px;
       background: #fff;
@@ -132,11 +132,16 @@ body {
       border-color: red;
       position: fixed;
       top: 20px;
-      left: 42%;
-      width: 200px;
       transition: all 5s ease-in-out;
       opacity: 0.8;
+      z-index: 1000;
       }
+
+.alert-warning{
+    margin-top: 20px;
+    margin-left: 40px;
+    align: center;
+    font-size: 15px;}
 
 
 .overlay {

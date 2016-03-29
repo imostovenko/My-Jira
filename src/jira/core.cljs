@@ -1,8 +1,6 @@
 (ns jira.core
   (:require
     [jira.db :as db]
-    ;;[rum.core :as rum]
-    ;[reforms.rum :include-macros true :as f]
     [rum.core :include-macros true :as rum]
     [clojure.string :as str]
     [ajax.core :refer [GET POST]]
@@ -15,7 +13,6 @@
 ;----- Declare---------
 
 (declare
-  tickets-table
   new-t-popup
   edit-prj-popup
   confirmation-t-delete
@@ -26,34 +23,42 @@
 (declare warning)
 
 
-(declare alert alert-message on-alert-dismiss)
-(rum/defc alert
+(declare alert-error alert-message on-alert-dismiss)
+(rum/defc alert-error
   [alert-message on-alert-dismiss]
-  [:div.alert
-   [:alert
+  [:div
+   [:alert.alert.alert-danger.alert-error
     [:a.close {:href "#"
                :on-click on-alert-dismiss} "X"]
     [:span.glyphicon.glyphicon-exclamation-sign.red]
     alert-message]])
 
 
+
+
+(declare login-form)
 (rum/defcs login-form < (rum/local {:e "" :p ""} ::creds)
                         (rum/local false ::validation)
   [state]
   (println (pr-str state))
   ;(println result)
   (let [v (::creds state)
+
         error (::validation state)
+        pass-correct? (db/pass-correct? (:e @v) (:p @v))
+        login-error #(:error (db/login-u! (:e @v) (:p @v)))
+        on-alert-dismiss #(reset! error false)
+
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-email-change (partial on-change :e)
         on-passw-change #(on-change :p %)
-        on-submit #(if (db/pass-correct? (:e @v) (:p @v))
+        on-submit #(if pass-correct?
                     (do
                       (db/login-u! (:e @v) (:p @v))
                       (reset! error false))
-                    (reset! error true))
-        on-alert-dismiss #(reset! error false)]
+                    (reset! error true))]
+
       [:div.login-card
        [:h3 "Login Form"]
 
@@ -80,16 +85,7 @@
          [:a {:on-click #(reset! db/need-registration? 1)
                :vertical-align "middle"}
           "Sign Up"]]]
-       (when @error (alert (:error (db/login-u! (:e @v) (:p @v))) on-alert-dismiss))]))
-
-;(when @error
-;  [:div.alert
-;   [:alert.alert-danger
-;    [:a.close {:href "#"
-;               :on-click #(reset! error false)} "X"]
-;    "EROORROR"]])
-
-
+       (when @error (alert-error (login-error) on-alert-dismiss))]))
 
 
 
@@ -134,7 +130,7 @@
          :vertical-align "middle"}
         "Sign In"]]]]))
 
-
+(declare logout-form)
 (rum/defc logout-form
   [user]
   [:p.navbar-text.navbar-right "Signed in as "
@@ -143,7 +139,7 @@
     [:i (str/capitalize user)]
     [:span.glyphicon.glyphicon-log-out]]])
 
-
+(declare login-section)
 (rum/defc login-section < rum/reactive
   []
   (rum/react db/need-registration?)
@@ -158,7 +154,7 @@
      [:p "© Mostovenko, 2016"]]])
 
 
-
+(declare navigation)
 (rum/defc navigation < rum/reactive
   []
   (let [user (rum/react db/current-u)]
@@ -387,9 +383,7 @@
 
 ;--------Tickets----------------
 
-(declare edit-t-popup
-  conf-t-delete)
-
+(declare conf-t-delete)
 (rum/defc conf-t-delete
   [t-id on-dismiss-fn]
   (let [on-submit #(db/delete-t! t-id)]
@@ -416,13 +410,16 @@
          "Delete"]]]]]))
 
 
+
+
+(declare edit-t-popup)
 (rum/defcs edit-t-popup < (rum/local {:subj nil :type nil :prior nil :descr nil :assi nil :status nil})
   [state t-id on-dismiss-fn]
   (println "modal editTick" (pr-str state))
   (let [v (:rum/local state)
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
-        on-subj-change (partial on-change :subj)
+        on-subj-change #(on-change :subj %)
         on-descr-change #(on-change :descr %)
         on-assi-change #(on-change :assi %)
         on-status-change (fn [new-status]
@@ -438,9 +435,9 @@
                        (db/update-t-prior! t-id (:prior @v))
                        (db/update-t-type! t-id (:type @v)))
         delete #(db/delete-t! t-id)]
-    (when (nil? (:descr @v)) (swap! v assoc :descr (:description (db/get-t t-id))))
+    ;(when (nil? (:descr @v)) (swap! v assoc :descr (:description (db/get-t t-id))))
     (when (nil? (:subj @v)) (swap! v assoc :subj (:subj (db/get-t t-id))))
-    (when (nil? (:assi @v)) (swap! v assoc :assi (:assignee (db/get-t t-id))))
+    (when (nil? (:assi @v)) (swap! v assoc :assi (db/u-id->login (:assignee (db/get-t t-id)))))
     (when (nil? (:status @v)) (swap! v assoc :status (:status (db/get-t t-id))))
     (when (nil? (:type @v)) (swap! v assoc :type (:type (db/get-t t-id))))
     (when (nil? (:prior @v)) (swap! v assoc :prior (:prior (db/get-t t-id))))
@@ -513,7 +510,7 @@
            {:on-change on-assi-change
             :value     (:assi @v)}
            (for [i (keys @db/users)]
-             (if (= ((@db/users i) :login) (:assignee (db/get-t t-id)))
+             (if (= ((@db/users i) :login) (db/u-id->login (:assignee (db/get-t t-id))))
                [:option {:selected "selected"} ((@db/users i) :login)]
                [:option ((@db/users i) :login)]))]]]
 
@@ -695,10 +692,10 @@
 (declare warning)
 (rum/defc warning
   [text]
-  [:div.alert.alert-warning {:role "alert"}
+  [:div.error-alert {:role "alert"}
    [:strong text]])
 
-
+(declare tickets-table)
 (rum/defcs tickets-table < rum/reactive
   (rum/local false ::show-create?)
   (rum/local false ::show-filter?)
@@ -776,14 +773,14 @@
         (when @show-filter?
           (filter-section f-settings))
 
-        [:div
+        [:div.container-fluid
          (cond
            (true? prj-has-no-tickets?)
-           (warning "No tickets for that project yet.")
+           [:alert.alert.alert-warning "No tickets for that project yet."]
            (empty? filtered-tickets-map)
-           (warning "Sorry, no tickets for your selection, try change the filter.")
+           [:alert.alert.alert-warning "Sorry, no tickets for your selection, try change the filter params."]
            (empty? search)
-           (warning "Sorry, no tickets for your selarch, try change query.")
+           [:alert.alert.alert-warning "Sorry, no tickets for your search, try another search params."]
            (empty? @s-query)
            (tickets-lines filtered-tickets-map)
            :else
@@ -791,11 +788,11 @@
            (tickets-lines search))
          (when @show-create?
            (new-t-popup toggle-create))
-         (when-not nothing-selected-filter? (reset! s-query))]])]))
+         (when-not nothing-selected-filter?
+           (reset! s-query))]])]))
 
 
 
-;-------- Modals -----------
 
 (rum/defcs new-t-popup < (rum/local {:type :0 :status :0 :prior :0 :subj nil :descr nil :assi @db/current-u})
   [state on-dismiss-fn]
@@ -812,7 +809,7 @@
                           (swap! v assoc :prior new-prior))
         on-type-change (fn [new-type]
                          (swap! v assoc :type new-type))
-        on-submit #(db/create-t! @db/selected-p (:type @v) (:prior @v) (:status @v) (:subj @v) (:descr @v) (:assi @v))]
+        on-submit #(db/create-t! @db/selected-p (:type @v) (:prior @v) (:status @v) (:subj @v) (:descr @v) (db/u-login->id (:assi @v)))]
 
     [:div.overlay
      [:div.popup

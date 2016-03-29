@@ -2,9 +2,7 @@
   (:require
     [clojure.java.io :as io]))
 
-(def db-file (io/file
-               "/Users/irinamostovenko/Desktop/jira/DB.edn"))
-               ;"./DB.edn"))
+(def db-file (io/file "./DB.edn"))
 
 
 (defn spit-mkdirs [f content]

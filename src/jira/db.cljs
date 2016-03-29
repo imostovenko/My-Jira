@@ -14,12 +14,10 @@
   :error)
 
 
-(declare selected-p
+(declare
   u-login->id
   get-u-projects
-  get-p
   p-title->id
-  login-u!
   add-t-to-p!
   add-u-to-p!
   status)
@@ -62,7 +60,7 @@
    :status      status
    :subj        subj
    :description descr
-   :creator     @current-u
+   :creator     (u-login->id @current-u)
    :assignee    assignee})
 (defn count-tickets [] (count @tickets))
 
@@ -124,13 +122,13 @@
 
 
 ;-------CREATE ---------------
-
+(declare login-u!)
 (defn register-u!
   ([login]
    (register-u! login def-pass))
   ([login pass]
    (if (u-exists? login)
-     (println "User with such login:" login " already registered!
+     (println "User with such login: " login " already registered!
      Try another login name, please.")
      (let [u-id (next-u-id)]
        (swap! users assoc u-id {:login    login
@@ -158,11 +156,11 @@
 
 (defn create-t!
   ([p-id subj descr]
-   (create-t! p-id :0 :0 :0 subj descr @current-u))
+   (create-t! p-id :0 :0 :0 subj descr (u-login->id @current-u)))
 
   ([p-id type prior status subj descr assignee]
    (if (and (p-exists? p-id)
-         (u-exists? assignee)
+         (u-exists? (u-id->login assignee))
          (contains? t-type type)
          (contains? t-prior prior)
          (contains? t-status status))
@@ -282,16 +280,6 @@
 
 
 ;------------------------------------
-;---------SEARCH ------------------
-;------------------------------------
-;TODO
-
-
-
-
-
-
-;------------------------------------
 ;---------UPDATE ------------------
 ;------------------------------------
 
@@ -299,7 +287,7 @@
   [login pass]
   (cond
     (not (u-exists? login))
-    {:error (str/join ["User with such login:" login "doesn't exisst."])}
+    {:error (str/join ["User with such login: " login " doesn't exist."])}
     (pass-correct? login pass)
     (do (reset! current-u login)
         (reset! selected-p (-> @current-u
@@ -353,8 +341,8 @@
     (not (p-exists? p-id))
     (error "Project with ID:" p-id "doesn't exist, so nothing to update!")
     (not (p-title-unique? new-title))
-    (error "Project title:" new-title "already used.
-    Use unique projects titles please")
+    {:error "Project title: " new-title " already used.
+    Use unique projects titles please"}
     :else
     (swap! projects assoc-in [p-id :title] new-title)))
 
@@ -386,7 +374,7 @@
 (defn reassign-t!
   [t-id assi]
   (if (u-exists? assi)
-    (do (update-t! t-id :assignee assi)
+    (do (update-t! t-id :assignee (u-login->id assi))
         (add-u-to-p! (:project (get-t 4)) assi))
     (error "User with login:" assi "doesn't exist, so can't reassign!")))
 
