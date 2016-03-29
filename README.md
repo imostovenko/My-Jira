@@ -1,10 +1,10 @@
-# jira
+# my-jira
 
-FIXME: Write a one-line description of your library/project.
+Simple projects/tickets management web-app with simple GUI.
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+Practice project to learn Clojure, ClojureScript, Bootstrap
 
 ## Setup
 
