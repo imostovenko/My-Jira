@@ -1,10 +1,10 @@
 # my-jira
 
-Simple projects/tickets management web-app with simple GUI.
+Simple projects/tickets management web-app with bootstrap GUI.
 
 ## Overview
 
-Practice project to learn Clojure, ClojureScript, Bootstrap
+Practice project to learn Clojure, ClojureScript
 
 ## Setup
 
