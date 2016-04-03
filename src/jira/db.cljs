@@ -51,10 +51,11 @@
 
 (def t-type {:0 "TODO" :1 "FIXME"})
 (def t-prior {:0 "High" :1 "Medium" :2 "Low"})
-(def t-status {:0 "OPEN" :1 "IN PROGRESS" :2 "DONE"})
+(def t-status {:0 "Open" :1 "In Progress" :2 "Done"})
 (defn empty-t
-  [p-id type prior status subj descr assignee]
-  {:project     p-id
+  [next-t-id p-id type prior status subj descr assignee]
+  {:id        next-t-id
+   :project     p-id
    :type        type
    :prior       prior
    :status      status
@@ -112,7 +113,7 @@
 
 (defn u-id->login
   [user-id]
-  ((@users user-id) :login))
+  (:login (@users user-id)))
 
 
 (defn p-title->id
@@ -127,12 +128,15 @@
   ([login]
    (register-u! login def-pass))
   ([login pass]
-   (if (u-exists? login)
-     (println "User with such login: " login " already registered!
-     Try another login name, please.")
-     (let [u-id (next-u-id)]
-       (swap! users assoc u-id {:login    login
-                                :password pass})
+   (cond
+     (u-exists? login)
+     {:error (str/join ["User with such login: " login " already registered!
+     Try another login name, please."])}
+     (or (empty? login) (empty? pass))
+     {:error "Login and password can't be empty. Please specify!"}
+     :else
+     (do
+       (swap! users assoc (next-u-id){:login login :password pass})
        (login-u! login pass)
        @current-u))))
 
@@ -144,13 +148,16 @@
    (create-p! projects p-title descr))
   ([projects p-title descr]
    (let [id (next-p-id)]
-     (when (contains? @projects id)
-       (println "contains id"))
-     (if (p-title-unique? p-title)
+     (cond
+       (not (p-title-unique? p-title))
+       {:error (str/join ["Project with title: " p-title " has been already created! Choose another."])}
+       (empty? p-title)
+       {:error "Project title should not be empty. Please specify!"}
+       :else
        (do
          (swap! projects assoc id (empty-p @current-u p-title descr))
-         (select-p id))
-       (error "Project " p-title " has been already created!")))))
+         (select-p id))))))
+
 
 
 
@@ -165,11 +172,16 @@
          (contains? t-prior prior)
          (contains? t-status status))
      (let [t-id (next-t-id)]
-       (swap! tickets assoc t-id (empty-t p-id type prior status subj descr assignee))
-       (add-t-to-p! p-id t-id)
-       t-id)
-     (error "project or users (" p-id "or" assignee ") doesn't exist! Check is t-type (:0 :1)
-     and t-prior (:0 :1 :2) are valid"))))
+       (cond
+         (empty? subj)
+         {:error "Ticket subject should not be empty. Please specify!"}
+         :else
+         (do
+           (swap! tickets assoc t-id (empty-t t-id p-id type prior status subj descr assignee))
+           (add-t-to-p! p-id t-id)
+           t-id)))
+     {:error (str/join ["project or users (" p-id "or" assignee ") doesn't exist! Check is t-type (:0 :1)
+     and t-prior (:0 :1 :2) are valid"])})))
 
 
 ;-----------GET --------------
@@ -375,7 +387,7 @@
   [t-id assi]
   (if (u-exists? assi)
     (do (update-t! t-id :assignee (u-login->id assi))
-        (add-u-to-p! (:project (get-t 4)) assi))
+        (add-u-to-p! (:project (get-t t-id)) assi))
     (error "User with login:" assi "doesn't exist, so can't reassign!")))
 
 (defn update-t-type!
@@ -426,7 +438,7 @@
   [p-id user-name]
   (if (and (p-exists? p-id) (u-exists? user-name))
     (swap! projects update-in [p-id :users] conj user-name)
-    (error "Project with ID:" p-id " or user" user-name " doesn't exist, so nothing to update!")))
+    (error "Project with IDddd:" p-id " or user" user-name " doesn't exist, so nothing to update!")))
 
 
 (defn remove-u-from-p!
@@ -469,12 +481,11 @@
          (reset! selected-p (-> @current-u
                               get-u-projects
                               first)))
-
      (error "Project with ID:" p-id "doesn't exist, so nothing to delete"))))
 
 
 (defn delete-t!
-  "Delete single ticket from tickets anв from corresponding project"
+  "Delete single ticket from tickets and from corresponding project"
   [t-id]
   (if (t-exists? t-id)
     (let [p-id ((@tickets t-id) :project)]
@@ -521,7 +532,6 @@
 
 (defn on-db-get
   [data]
-  ;(println data)
   (-> data (spy "one") u/transit->obj (spy "two") init-db)
   (println "loaded atoms from file"))
 
@@ -535,9 +545,6 @@
 
 
 (defn get-db []
-  ;(GET "/api/db/get"
-  ;  {:handler       on-db-get
-  ;   :error-handler #(println "error" %)}))
   (sync-GET "/api/db/get" on-db-get))
 
 

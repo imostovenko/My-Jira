@@ -20,44 +20,38 @@
   footer)
 
 ;-----------------------
-(declare warning)
 
 
 (declare alert-error alert-message on-alert-dismiss)
 (rum/defc alert-error
   [alert-message on-alert-dismiss]
-  [:div
-   [:alert.alert.alert-danger.alert-error
-    [:a.close {:href "#"
-               :on-click on-alert-dismiss} "X"]
+  [:div.form-group
+   [:div.alert.alert-danger.alert-error
     [:span.glyphicon.glyphicon-exclamation-sign.red]
-    alert-message]])
-
-
+    alert-message
+    [:a.close#X {:href "#"
+                 :on-click on-alert-dismiss} "X"]]])
 
 
 (declare login-form)
 (rum/defcs login-form < (rum/local {:e "" :p ""} ::creds)
-                        (rum/local false ::validation)
+                        (rum/local false ::error)
   [state]
   (println (pr-str state))
-  ;(println result)
   (let [v (::creds state)
 
-        error (::validation state)
-        pass-correct? (db/pass-correct? (:e @v) (:p @v))
-        login-error #(:error (db/login-u! (:e @v) (:p @v)))
+        error (::error state)
+        login-error-text #(:error (db/login-u! (:e @v) (:p @v)))
+        login-error? (not (nil? login-error-text))
         on-alert-dismiss #(reset! error false)
 
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-email-change (partial on-change :e)
         on-passw-change #(on-change :p %)
-        on-submit #(if pass-correct?
-                    (do
-                      (db/login-u! (:e @v) (:p @v))
-                      (reset! error false))
-                    (reset! error true))]
+        on-submit #(do
+                    (db/login-u! (:e @v) (:p @v))
+                    (reset! error login-error?))]
 
       [:div.login-card
        [:h3 "Login Form"]
@@ -85,23 +79,30 @@
          [:a {:on-click #(reset! db/need-registration? 1)
                :vertical-align "middle"}
           "Sign Up"]]]
-       (when @error (alert-error (login-error) on-alert-dismiss))]))
-
+       (when @error (alert-error (login-error-text) on-alert-dismiss))]))
 
 
 
 (rum/defcs registration-form < (rum/local {:e "" :p ""})
+                              (rum/local "" ::error)
   [state]
   (println (pr-str state))
   (let [v (:rum/local state)
+        error (::error state)
+        show-error? (not (str/blank? @error))
+        on-alert-dismiss #(reset! error "")
+
+        on-submit #(let [res (db/register-u! (:e @v) (:p @v))
+                         err (get res :error)]
+                    (if err
+                      (reset! error err)))
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
-        on-email-change (partial on-change :e)
-        on-passw-change #(on-change :p %)
-        on-submit #(db/register-u! (:e @v) (:p @v))]
+        on-email-change #(on-change :e %)
+        on-passw-change #(on-change :p %)]
+
     [:div.login-card
      [:h3 "Registration Form"]
-
      [:div.form-group.required
       [:input.form-control
        {:type        "text"
@@ -109,15 +110,12 @@
         :value       (:e @v)
         :required    "required"
         :on-change   on-email-change}]]
-
-
      [:div.form-group
       [:input.form-control
        {:type        "password"
         :placeholder "Password"
         :value       (:p @v)
         :on-change   on-passw-change}]]
-
      [:div.form-group
       [:button.btn.btn-success.pull-right
        {:type     "submit"
@@ -125,10 +123,12 @@
        "Sign Up " [:span.glyphicon.glyphicon-star-empty]]
       [:span.pull-left
        [:a
-        {:href           "#"
-         :on-click       #(reset! db/need-registration? 0)
+        {:on-click       #(reset! db/need-registration? 0)
          :vertical-align "middle"}
-        "Sign In"]]]]))
+        "Sign In"]]]
+     (when show-error?
+       (alert-error @error on-alert-dismiss))]))
+
 
 (declare logout-form)
 (rum/defc logout-form
@@ -148,7 +148,6 @@
      (if (= 0 @db/need-registration?)
        (login-form)
        (registration-form))]
-
     [:div.bottom-align-text.footer
      [:hr]
      [:p "© Mostovenko, 2016"]]])
@@ -187,23 +186,46 @@
    [:a.close {:on-click on-close-fn} "x"]])
 
 
-;--------Projects----------
+(declare new-p-popup)
+(rum/defcs title-section < rum/reactive (rum/local false ::show-modal?)
+  [state]
+  (let [show-local? (::show-modal? state)
+        toggle-modal #(swap! show-local? not)]
+    [:div.jumbotron
+     [:div.container
+      [:div
+       [:h1#hello "Hello, " (str/capitalize @db/current-u) " !"]
+       [:p "You can create a new project or go to browse tickets
+     of your existing projects"]
+       [:button.btn.btn-primary.btn-lg
+        {:on-click toggle-modal}
+        "Create New Project"]
+       (when @show-local?
+         (new-p-popup toggle-modal))]]]))
 
-(declare newPrj)
-(rum/defcs newPrj < (rum/local {:title "" :descr ""})
+
+(rum/defcs new-p-popup < (rum/local {:title "" :descr ""})
+                         (rum/local "" ::error)
   [state on-close-fn]
   (println "modal newPrj:" (pr-str state))
+
   (let [v (:rum/local state)
+        error (::error state)
+        show-error? (not (str/blank? @error))
+        on-alert-dismiss #(reset! error "")
+
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-title-change #(on-change :title %)
         on-descr-change #(on-change :descr %)
-        on-submit #(db/create-p! (:title @v) (:descr @v))]
-
+        on-submit #(let [res (db/create-p! (:title @v) (:descr @v))
+                         err (get res :error)]
+                    (if err
+                      (reset! error err)
+                      (on-close-fn)))]
     [:div.overlay
      [:div.popup
       (popup-header "Create NEW Project" on-close-fn)
-
       [:div.popup-content
        [:form.form-horizontal {:role "form"}
         [:div.form-group.required
@@ -229,8 +251,9 @@
             :rows        "3"
             :placeholder "short project description"
             :value       (:descr @v)
-            :on-change   on-descr-change}]]]]]
-
+            :on-change   on-descr-change}]]]]
+       (when show-error?
+         (alert-error @error on-alert-dismiss))]
       [:div.popup-footer
        [:div
         [:button.btn.btn-default
@@ -239,40 +262,21 @@
          "Cancel"]
         [:button.btn.btn-success
          {:type     "submit"
-          :on-click #((on-submit) (on-close-fn))}
+          :on-click on-submit}
          "Create"]]]]]))
 
 
-(declare title-section)
-(rum/defcs title-section < rum/reactive (rum/local false ::show-modal?)
-  [state]
-  ;(rum/react db/current-u)
-  (let [show-local? (::show-modal? state)
-        toggle-modal #(swap! show-local? not)]
-
-    [:div.jumbotron
-     [:div.container
-      [:div
-       [:h1#hello "Hello, " (str/capitalize @db/current-u) " !"]
-       [:p "You can create a new project or go to browse tickets
-     of your existing projects"]
-       [:button.btn.btn-primary.btn-lg
-        {:on-click toggle-modal}
-        "Create New Project"]
-
-       (when @show-local?
-         (newPrj toggle-modal))]]]))
 
 
 
 
+(declare conf-p-delete)
+(defonce conf-p-del (atom false))
 
-
-
-(rum/defcs edit-prj-popup < (rum/local {:title nil :descr nil})
-  [state p-id on-close-fn]
+(rum/defcs edit-prj-popup < (rum/local {:title nil :descr nil} ::prj)
+  [state p-id on-close-fn conf-p-delete-fn]
   (println "modal editPrj:" (pr-str state))
-  (let [v (:rum/local state)
+  (let [v (::prj state)
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-title-change (partial on-change :title)
@@ -287,11 +291,6 @@
 
     [:div.overlay
      [:div.popup
-      ;[:div.popup-header
-      ; [:h3 "Edit Project - " (db/get-p-title p-id) " , id:" p-id]
-      ; [:a.close
-      ;  {:on-click on-close-fn}
-      ;  "x"]]
       (popup-header popup-header-title on-close-fn)
 
       [:div.popup-content
@@ -326,7 +325,7 @@
        [:div
         [:button.btn.btn-danger.pull-left
          {:type     "button"
-          :on-click #((delete) (on-close-fn))}
+          :on-click #((conf-p-delete-fn)(on-close-fn))}
          "Delete"]
         [:button.btn.btn-default
          {:type     "button"
@@ -339,13 +338,17 @@
 
 
 (declare prj-card)
-(rum/defcs prj-card < rum/reactive (rum/local false ::show-modal?)
+(rum/defcs prj-card < rum/reactive (rum/local false ::show-modal?) (rum/local false ::show-conf-delete?)
   "Card with details of a single project"
   [state p-id]
   (println "modal prjCard" (pr-str state))
   (let [id p-id
         show-local? (::show-modal? state)
-        toggle-modal #(swap! show-local? not)]
+        toggle-modal #(swap! show-local? not)
+
+        show-conf-delete? (::show-conf-delete? state)
+        toggle-conf #(swap! show-conf-delete? not)]
+
     [:div.col-md-4
      [:div.card
       [:h2 (db/get-p-title id)
@@ -354,10 +357,14 @@
           [:a.navbar-link
            {:on-click toggle-modal}
            [:span.glyphicon.glyphicon-pencil.orange]]])]
-      (when @show-local?
-        (edit-prj-popup id toggle-modal))
 
-      [:h4 [:span.small "Created by "] (db/who-is-author id)]
+      (when @show-local?
+        (edit-prj-popup id toggle-modal toggle-conf))
+
+      (when @show-conf-delete?
+        (conf-p-delete id toggle-conf))
+
+      [:h4 [:span.small "Created by "] (str/capitalize (db/who-is-author id))]
       [:p (db/get-p-descr id)]
 
       [:button.btn.btn-default
@@ -381,8 +388,6 @@
          (prj-card p-id)))]))
 
 
-;--------Tickets----------------
-
 (declare conf-t-delete)
 (rum/defc conf-t-delete
   [t-id on-dismiss-fn]
@@ -394,10 +399,8 @@
        [:a.close
         {:on-click on-dismiss-fn}
         "x"]]
-
       [:div.popup-content
        [:p "Are you sure want to delete the ticket? This can not be undone."]]
-
       [:div.popup-footer
        [:div
         [:button.btn.btn-default
@@ -410,13 +413,47 @@
          "Delete"]]]]]))
 
 
+(declare conf-p-delete)
+(rum/defc conf-p-delete
+  [p-id on-dismiss-fn]
+  (let [on-submit #(db/delete-p! p-id)]
+    (when conf-p-del
+      [:div.overlay
+       [:div.popup
+        [:div.popup-header
+         [:h3 (str "Delete Project - " (db/get-p-title p-id) " , id:" p-id)]
+         ;[:h3 "Delete Project - " p-id " - " (:title (db/get-p p-id))]
+         [:a.close
+          {:on-click on-dismiss-fn}
+          "x"]]
+        [:div.popup-content
+         [:p "Are you sure want to delete the project?
+         All it's tickets will be deleted as well and this can not be undone."]]
+        [:div.popup-footer
+         [:div
+          [:button.btn.btn-default
+           {:type     "button"
+            :on-click on-dismiss-fn}
+           "Cancel"]
+          [:button.btn.btn-danger
+           {:type     "submit"
+            :on-click #((on-submit) (on-dismiss-fn))}
+           "Delete"]]]]])))
 
 
-(declare edit-t-popup)
-(rum/defcs edit-t-popup < (rum/local {:subj nil :type nil :prior nil :descr nil :assi nil :status nil})
-  [state t-id on-dismiss-fn]
-  (println "modal editTick" (pr-str state))
-  (let [v (:rum/local state)
+
+
+
+
+(declare on-dismiss-fn my-btn-group)
+(rum/defcs new-t-popup < (rum/local {:type :0 :status :0 :prior :0 :subj "" :descr "" :assi @db/current-u } ::ticket)
+                         (rum/local "" ::error)
+  [state on-close-fn]
+  (println (pr-str state))
+  (let [v (::ticket state)
+        error (::error state)
+        show-error? (not (str/blank? @error))
+        on-alert-dismiss #(reset! error "")
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-subj-change #(on-change :subj %)
@@ -428,66 +465,25 @@
                           (swap! v assoc :prior new-prior))
         on-type-change (fn [new-type]
                          (swap! v assoc :type new-type))
-        on-submit #(do (db/update-t-descr! t-id (:descr @v))
-                       (db/update-t-subj! t-id (:subj @v))
-                       (db/reassign-t! t-id (:assi @v))
-                       (db/update-t-status! t-id (:status @v))
-                       (db/update-t-prior! t-id (:prior @v))
-                       (db/update-t-type! t-id (:type @v)))
-        delete #(db/delete-t! t-id)]
-    ;(when (nil? (:descr @v)) (swap! v assoc :descr (:description (db/get-t t-id))))
-    (when (nil? (:subj @v)) (swap! v assoc :subj (:subj (db/get-t t-id))))
-    (when (nil? (:assi @v)) (swap! v assoc :assi (db/u-id->login (:assignee (db/get-t t-id)))))
-    (when (nil? (:status @v)) (swap! v assoc :status (:status (db/get-t t-id))))
-    (when (nil? (:type @v)) (swap! v assoc :type (:type (db/get-t t-id))))
-    (when (nil? (:prior @v)) (swap! v assoc :prior (:prior (db/get-t t-id))))
+        on-submit #(let [res (db/create-t! @db/selected-p (:type @v) (:prior @v) (:status @v) (:subj @v) (:descr @v) (db/u-login->id (:assi @v)))
+                         err (get res :error)]
+                     (if err
+                       (reset! error err)
+                       (on-close-fn)))]
     [:div.overlay
      [:div.popup
       [:div.popup-header
-       [:h3 "Edit Ticket - " t-id]
+       [:h3 "Create New Ticket"]
        [:a.close
-        {:on-click on-dismiss-fn}
+        {:on-click on-close-fn}
         "x"]]
 
       [:div.popup-content
-       [:form.form-horizontal {:role "form"}
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "type"}
-          "Type:"]
-         [:div.btn-group.col-sm-6
-          {:id "prior"}
-          (for [i (keys db/t-type)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-type (:type @v))
-              :on-click #(on-type-change i)}
-             (i db/t-type)])]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "status"}
-          "Status:"]
-         [:div.btn-group.col-sm-6
-          {:id "status"}
-          (for [i (keys db/t-status)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-status (:status @v))
-              :on-click #(on-status-change i)}
-             (i db/t-status)])]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "prior"}
-          "Priority:"]
-         [:div.btn-group.col-sm-6
-          (for [i (keys db/t-prior)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-prior (:prior @v))
-              :on-click #(on-prior-change i)}
-             (i db/t-prior)])]]
+       [:form.form-horizontal
+        {:role "form"}
+        (my-btn-group "Type:" :type db/t-type on-type-change v)
+        (my-btn-group "Status:" :status db/t-status on-status-change v)
+        (my-btn-group "Priority:" :prior db/t-prior on-prior-change v)
 
         [:div.form-group.required
          [:label.control-label.col-sm-4
@@ -510,10 +506,117 @@
            {:on-change on-assi-change
             :value     (:assi @v)}
            (for [i (keys @db/users)]
-             (if (= ((@db/users i) :login) (db/u-id->login (:assignee (db/get-t t-id))))
-               [:option {:selected "selected"} ((@db/users i) :login)]
-               [:option ((@db/users i) :login)]))]]]
+             [:option ((@db/users i) :login)])]]]
+        [:div.form-group
+         [:label.control-label.col-sm-4
+          {:for "t-descr"}
+          "Description:"]
+         [:div.col-sm-6
+          [:textarea.form-control
+           {:type        "text"
+            :id          "t-descr"
+            :rows        "3"
+            :placeholder "ticket description"
+            :value       (:descr @v)
+            :on-change   on-descr-change}]]]]
+       (when show-error? (alert-error @error on-alert-dismiss))]
 
+      [:div.popup-footer
+       [:div
+        [:button.btn.btn-default
+         {:type     "button"
+          :on-click on-close-fn}
+         "Cancel"]
+        [:button.btn.btn-success
+         {:type     "submit"
+          :on-click on-submit}
+         "Create"]]]]]))
+
+
+
+(declare my-btn-group)
+(rum/defc my-btn-group
+  [btn-label btn-key values-set on-btn-click v]
+  [:div.form-group.required
+   [:label.control-label.col-sm-4
+    {:for btn-label}
+    btn-label]
+   [:div.btn-group.col-sm-6
+    {:id btn-label}
+    (for [i (keys values-set)]
+      [:button.btn.btn-default
+       {:class (if (= i (btn-key @v)) "active" "")
+        :type     "button"
+        :value    (values-set (btn-key @v))
+        :on-click #(on-btn-click i)}
+       (i values-set)])]])
+
+
+(declare edit-t-popup)
+(rum/defcs edit-t-popup < (rum/local {:type nil :status nil :prior nil :subj nil :descr nil :assi nil})
+  [state t-id on-dismiss-fn]
+  (println "modal editTick" (pr-str state))
+  (let [v (:rum/local state)
+        on-change (fn [key e]
+                    (swap! v assoc key (-> e .-target .-value)))
+        on-subj-change #(on-change :subj %)
+        on-descr-change #(on-change :descr %)
+        on-assi-change #(on-change :assi %)
+        on-status-change (fn [new-status]
+                           (swap! v assoc :status new-status))
+        on-prior-change (fn [new-prior]
+                          (swap! v assoc :prior new-prior))
+        on-type-change (fn [new-type]
+                         (swap! v assoc :type new-type))
+        on-submit #(do (db/update-t-descr! t-id (:descr @v))
+                       (db/update-t-subj! t-id (:subj @v))
+                       (db/reassign-t! t-id (:assi @v))
+                       (db/update-t-status! t-id (:status @v))
+                       (db/update-t-prior! t-id (:prior @v))
+                       (db/update-t-type! t-id (:type @v)))
+        delete #(db/delete-t! t-id)
+        when-nil-fn (fn [a-key t-key]
+                      (when (nil? (a-key @v)) (swap! v assoc a-key (t-key (db/get-t t-id)))))]
+    (when-nil-fn :type :type)
+    (when-nil-fn :status :status)
+    (when-nil-fn :prior :prior)
+    (when-nil-fn :subj :subj)
+    (when-nil-fn :descr :description)
+    (when (nil? (:assi @v)) (swap! v assoc :assi (db/u-id->login (:assignee (db/get-t t-id)))))
+
+    [:div.overlay
+     [:div.popup
+      [:div.popup-header
+       [:h3 "Edit Ticket - " t-id]
+       [:a.close
+        {:on-click on-dismiss-fn}
+        "x"]]
+      [:div.popup-content
+       [:form.form-horizontal {:role "form"}
+        (my-btn-group "Type:" :type db/t-type on-type-change v)
+        (my-btn-group "Status:" :status db/t-status on-status-change v)
+        (my-btn-group "Priority:" :prior db/t-prior on-prior-change v)
+        [:div.form-group.required
+         [:label.control-label.col-sm-4
+          {:for "t-subj"}
+          "Subject:"]
+         [:div.col-sm-6
+          [:input.form-control#t-subj
+           {:type        "text"
+            :placeholder "ticket subj"
+            :value       (:subj @v)
+            :required    "required"
+            :on-change   on-subj-change}]]]
+        [:div.form-group.required
+         [:label.control-label.col-sm-4
+          {:for "users"}
+          "Assignee:"]
+         [:div.col-sm-6
+          [:select.form-control#users
+           {:on-change on-assi-change
+            :value     (:assi @v)}
+           (for [i (keys @db/users)]
+               [:option ((@db/users i) :login)])]]]
         [:div.form-group
          [:label.control-label.col-sm-4
           {:for "t-descr"}
@@ -526,8 +629,6 @@
             :placeholder "ticket description"
             :value       (:descr @v)
             :on-change   on-descr-change}]]]]]
-
-
       [:div.popup-footer
        [:div
         [:button.btn.btn-danger.pull-left
@@ -544,72 +645,12 @@
          "Save"]]]]]))
 
 
-(declare t-line)
-(rum/defcs t-line < rum/reactive
-  (rum/local false ::show-edit?)
-  (rum/local false ::show-conf?)
-  [state t-id ticket]
-  ;(println "modal tickLine" (pr-str state))
-  (let [show-edit? (::show-edit? state)
-        toggle-edit #(swap! show-edit? not)
 
-        show-conf? (::show-conf? state)
-        toggle-conf #(swap! show-conf? not)
-
-        status (:status ticket)
-        type (:type ticket)
-        prior (:prior ticket)
-
-        login-name #(:login (@db/users (% ticket)))]
-   ; (println (pr-str ticket))
-    [:tr
-
-     [:th t-id]
-     [:th
-      (cond
-        (= type :0) [:p [:span.glyphicon.glyphicon-ice-lolly.green]
-                       (:0 db/t-type)]
-        (= type :1) [:p [:span.glyphicon.glyphicon-ice-lolly-tasted.red]
-                       (:1 db/t-type)])]
-
-     [:th
-      (cond
-        (= prior :0) [:span.red (prior db/t-prior)]
-        (= prior :1) [:span.orange (prior db/t-prior)]
-        (= prior :2) [:span (prior db/t-prior)])]
-
-     [:th.text-capitalize (:subj ticket)]
-
-     [:th.text-capitalize (login-name :assignee)]
-
-     [:th.text-capitalize (login-name :creator)]
-
-     [:th
-      (cond
-        (= status :0) [:span.label.label-default.text-capitalize (:0 db/t-status)]
-        (= status :1) [:span.label.label-warning.text-capitalize (:1 db/t-status)]
-        (= status :2) [:span.label.label-success.text-capitalize (:2 db/t-status)])]
-
-
-     [:th
-      [:a
-       {:on-click toggle-edit}
-       [:span.glyphicon.glyphicon-edit.orange]]
-
-      [:a.btn-link.red
-       {:on-click toggle-conf}
-       [:span.glyphicon.glyphicon-remove-circle.red]]]
-
-     (when @show-edit?
-       (edit-t-popup t-id toggle-edit))
-     (when @show-conf?
-       (conf-t-delete t-id toggle-conf))]))
 
 
 (declare filter-section)
 (rum/defc filter-section
   [f-settings]
-  ;(let [toggle-my identity]
   [:div.container-fluid.filter-section
    [:div.col-md-3
     [:h5 "by Type:"]
@@ -625,7 +666,6 @@
                     :on-click toggle
                     :checked  contains}]
            (i db/t-type)]]))]]
-
    [:div.col-md-3
     [:h5 "by Priority:"]
     [:ul.list-group
@@ -640,7 +680,6 @@
                     :on-click toggle
                     :checked  contains}]
            (i db/t-prior)]]))]]
-
    [:div.col-md-3
     [:h5 "by Status:"]
     [:ul.list-group
@@ -655,7 +694,6 @@
                     :on-click toggle
                     :checked  contains}]
            (i db/t-status)]]))]]
-
    [:div.col-md-3
     [:h5 "by Assignee:"]
     [:ul.list-group
@@ -671,29 +709,96 @@
                     :checked  contains}]
            ((@db/users i) :login)]]))]]])
 
-(declare tickets-lines)
-(rum/defc tickets-lines
-  [filtered-tickets-map]
-  [:table.table.table-condensed
-   [:thead
-    [:tr
-     [:th "ID"]
-     [:th "Type"]
-     [:th "Priority"]
-     [:th "Subject"]
-     [:th "Assignee"]
-     [:th "Creator"]
-     [:th "Status"]
-     [:th "Actions"]]]
-   [:tbody
-    (for [[tid ticket] filtered-tickets-map]
-      (t-line tid ticket))]])
 
-(declare warning)
-(rum/defc warning
-  [text]
-  [:div.error-alert {:role "alert"}
-   [:strong text]])
+
+
+
+(declare tickets-lines t-line)
+(rum/defcs tickets-lines < rum/reactive
+  (rum/local nil ::tickets)
+  [state filtered-tickets-map]
+  (let [tickets (::tickets state)
+        sorted-by (fn [key order]
+                    (reset! tickets (sort-by key order @tickets)))]
+    (when (nil? @tickets) (reset! tickets filtered-tickets-map))
+    [:table.table.table-condensed
+     [:thead
+      [:tr
+       [:th "ID"
+        [:a {:on-click #(sorted-by :id >)} " desc"]
+        [:a {:on-click #(sorted-by :id <)} " asc"]]
+       [:th "Type"
+        [:a {:on-click #(sorted-by :type >)} " desc"]
+        [:a {:on-click #(sorted-by :type <)} " asc"]]
+       [:th "Priority"
+        [:a {:on-click #(sorted-by :prior >)} " desc"]
+        [:a {:on-click #(sorted-by :prior <)} " asc"]]
+       [:th "Subject"
+        [:a {:on-click #(sorted-by :subj >)} " desc"]
+        [:a {:on-click #(sorted-by :subj <)} " asc"]]
+       [:th "Assignee"
+        [:a {:on-click #(sorted-by :assignee >)} " desc"]
+        [:a {:on-click #(sorted-by :assignee <)} " asc"]]
+       [:th "Creator"
+        [:a {:on-click #(sorted-by :creator >)} " desc"]
+        [:a {:on-click #(sorted-by :creator <)} " asc"]]
+       [:th "Status"
+        [:a {:on-click #(sorted-by :status >)} " desc"]
+        [:a {:on-click #(sorted-by :status <)} " asc"]]
+       [:th "Actions"]]]
+     [:tbody
+      (for [ticket @tickets]
+        (t-line ticket))]]))
+
+
+(declare t-line)
+(rum/defcs t-line < rum/reactive
+  (rum/local false ::show-edit?)
+  (rum/local false ::show-conf?)
+  [state ticket]
+
+  (let [show-edit? (::show-edit? state)
+        toggle-edit #(swap! show-edit? not)
+        show-conf? (::show-conf? state)
+        toggle-conf #(swap! show-conf? not)
+        t-id (:id ticket)
+        status (:status ticket)
+        type (:type ticket)
+        prior (:prior ticket)
+        login-name #(:login (@db/users (% ticket)))]
+    [:tr
+     [:th t-id]
+     [:th
+      (cond
+        (= type :0) [:p [:span.glyphicon.glyphicon-ice-lolly.green] (:0 db/t-type)]
+        (= type :1) [:p [:span.glyphicon.glyphicon-ice-lolly-tasted.red] (:1 db/t-type)])]
+     [:th
+      (cond
+        (= prior :0) [:span.red (prior db/t-prior)]
+        (= prior :1) [:span.orange (prior db/t-prior)]
+        (= prior :2) [:span (prior db/t-prior)])]
+     [:th.text-capitalize (:subj ticket)]
+     [:th.text-capitalize (login-name :assignee)]
+     [:th.text-capitalize (login-name :creator)]
+     [:th
+      (cond
+        (= status :0) [:span.label.label-default.text-capitalize (:0 db/t-status)]
+        (= status :1) [:span.label.label-warning.text-capitalize (:1 db/t-status)]
+        (= status :2) [:span.label.label-success.text-capitalize (:2 db/t-status)])]
+     [:th
+      [:a
+       {:on-click toggle-edit}
+       [:span.glyphicon.glyphicon-edit.orange]]
+      [:a.btn-link.red
+       {:on-click toggle-conf}
+       [:span.glyphicon.glyphicon-remove-circle.red]]]
+     (when @show-edit?
+       (edit-t-popup t-id toggle-edit))
+     (when @show-conf?
+       (conf-t-delete t-id toggle-conf))]))
+
+
+
 
 (declare tickets-table)
 (rum/defcs tickets-table < rum/reactive
@@ -708,19 +813,14 @@
 
   (let [f-settings (::filter-settings state)
         s-query (::search-query state)
-
-
         show-create? (::show-create? state)
         toggle-create #(swap! show-create? not)
-
         show-filter? (::show-filter? state)
         toggle-filter #(do
                         (swap! show-filter? not)
                         (reset! f-settings {:types #{} :priors #{} :statuses #{} :users #{}}))
-
         empty-tickets-table? (or (empty? (db/get-u-projects @db/current-u))
                                (not (db/p-exists? @db/selected-p)))
-
         tickets (->> (db/get-tt-of-p @db/selected-p)
                   (select-keys @db/tickets))
         on-search-change (fn [e]
@@ -728,8 +828,7 @@
                           (reset! s-query (-> e .-target .-value))
                           (db/search @s-query tickets))
         search (db/search @s-query tickets)
-        filtered-tickets-map (db/super-filter @f-settings tickets)
-
+        filtered-tickets-map (vals (db/super-filter @f-settings tickets))
         prj-has-no-tickets? (= (db/count-p-tickets @db/selected-p) 0)
         nothing-filtered? (= (db/count-p-tickets @db/selected-p) (count filtered-tickets-map))
         nothing-selected-filter? (and (empty? (:types @f-settings))
@@ -739,6 +838,7 @@
 
     (println @s-query)
     (println nothing-selected-filter?)
+    (println state)
 
     [:div.tickets#tickets-table
      (if empty-tickets-table?
@@ -769,22 +869,19 @@
             :on-click toggle-create}
            [:span.glyphicon.glyphicon-plus]
            "New Ticket"]]]
-
         (when @show-filter?
           (filter-section f-settings))
-
         [:div.container-fluid
          (cond
            (true? prj-has-no-tickets?)
-           [:alert.alert.alert-warning "No tickets for that project yet."]
+           [:div.alert.alert-warning "No tickets for that project yet."]
            (empty? filtered-tickets-map)
-           [:alert.alert.alert-warning "Sorry, no tickets for your selection, try change the filter params."]
+           [:div.alert.alert-warning "Sorry, no tickets for your selection, try change the filter params."]
            (empty? search)
-           [:alert.alert.alert-warning "Sorry, no tickets for your search, try another search params."]
+           [:div.alert.alert-warning "Sorry, no tickets for your search, try another search params."]
            (empty? @s-query)
            (tickets-lines filtered-tickets-map)
            :else
-           ;(tickets-lines filtered-tickets-map)
            (tickets-lines search))
          (when @show-create?
            (new-t-popup toggle-create))
@@ -792,123 +889,6 @@
            (reset! s-query))]])]))
 
 
-
-
-(rum/defcs new-t-popup < (rum/local {:type :0 :status :0 :prior :0 :subj nil :descr nil :assi @db/current-u})
-  [state on-dismiss-fn]
-  (println (pr-str state))
-  (let [v (:rum/local state)
-        on-change (fn [key e]
-                    (swap! v assoc key (-> e .-target .-value)))
-        on-subj-change #(on-change :subj %)
-        on-descr-change #(on-change :descr %)
-        on-assi-change #(on-change :assi %)
-        on-status-change (fn [new-status]
-                           (swap! v assoc :status new-status))
-        on-prior-change (fn [new-prior]
-                          (swap! v assoc :prior new-prior))
-        on-type-change (fn [new-type]
-                         (swap! v assoc :type new-type))
-        on-submit #(db/create-t! @db/selected-p (:type @v) (:prior @v) (:status @v) (:subj @v) (:descr @v) (db/u-login->id (:assi @v)))]
-
-    [:div.overlay
-     [:div.popup
-      [:div.popup-header
-       [:h3 "Create New Ticket"]
-       [:a.close
-        {:on-click on-dismiss-fn}
-        "x"]]
-
-      [:div.popup-content
-       [:form.form-horizontal {:role "form"}
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "type"}
-          "Type:"]
-         [:div.btn-group.col-sm-6
-          {:id "prior"}
-          (for [i (keys db/t-type)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-type (:type @v))
-              :on-click #(on-type-change i)}
-             (i db/t-type)])]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "status"}
-          "Status:"]
-         [:div.btn-group.col-sm-6
-          {:id "status"}
-          (for [i (keys db/t-status)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-status (:status @v))
-              :on-click #(on-status-change i)}
-             (i db/t-status)])]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          ;{:for "prior"}
-          "Priority:"]
-         [:div.btn-group.col-sm-6
-          (for [i (keys db/t-prior)]
-            [:button.btn.btn-default
-             {:type     "button"
-              :value    (db/t-prior (:prior @v))
-              :on-click #(on-prior-change i)}
-             (i db/t-prior)])]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "t-subj"}
-          "Subject:"]
-         [:div.col-sm-6
-          [:input.form-control#t-subj
-           {:type        "text"
-            :placeholder "ticket subj"
-            :value       (:subj @v)
-            :required    "required"
-            :on-change   on-subj-change}]]]
-
-        [:div.form-group.required
-         [:label.control-label.col-sm-4
-          {:for "users"}
-          "Assignee:"]
-         [:div.col-sm-6
-          [:select.form-control#users
-           {:on-change on-assi-change
-            :value     (:assi @v)}
-           (for [i (keys @db/users)]
-             (if (= ((@db/users i) :login) @db/current-u)
-               [:option {:selected "selected"} ((@db/users i) :login)]
-               [:option ((@db/users i) :login)]))]]]
-
-        [:div.form-group
-         [:label.control-label.col-sm-4
-          {:for "t-descr"}
-          "Description:"]
-         [:div.col-sm-6
-          [:textarea.form-control
-           {:type        "text"
-            :id          "t-descr"
-            :rows        "3"
-            :placeholder "ticket description"
-            :value       (:descr @v)
-            :on-change   on-descr-change}]]]]]
-
-      [:div.popup-footer
-       [:div
-        [:button.btn.btn-default
-         {:type     "button"
-          :on-click on-dismiss-fn}
-         "Cancel"]
-        [:button.btn.btn-success
-         {:type     "submit"
-          :on-click #((on-submit) (on-dismiss-fn))}
-         "Create"]]]]]))
-
-;--------------------
 
 (rum/defc footer
   []
@@ -929,7 +909,6 @@
      (card-section)
      (tickets-table)
      (footer)]))
-
 
 
 (rum/mount (project-page) app-div)

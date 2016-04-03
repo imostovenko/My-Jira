@@ -127,21 +127,17 @@ body {
 .alert-error {
       padding-top: 20px;
       padding-bottom: 20px;
-      background: #fff;
-      border-radius: 5px;
-      border-color: red;
       position: fixed;
       top: 20px;
       transition: all 5s ease-in-out;
-      opacity: 0.8;
+      opacity: 1;
       z-index: 1000;
       }
 
-.alert-warning{
-    margin-top: 20px;
-    margin-left: 40px;
-    align: center;
-    font-size: 15px;}
+.div#alert-warning {
+    padding: 20px;
+    text-align: center;
+    }
 
 
 .overlay {
@@ -181,21 +177,28 @@ body {
   margin-top: 0;
   }
 
-.popup-header .close {
+
+.close:hover {
+  color: red;
+  }
+
+.popup .close {
   position: absolute;
   top: 20px;
   right: 30px;
-  transition: all 200ms;
   font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
   line-height: 0.7;
   }
 
-.popup .close:hover {
-  color: red;
-  }
+#X {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  line-height: 0.7;
+  padding-left: 10px;
+  font-size: 21px;
+  transition: all 200ms;
+    }
 
 .popup-content {
   max-height: 30%;
@@ -221,3 +224,20 @@ body {
   margin-right: 10px;
   }
 */
+
+.arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid black;
+}
+
+.arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+
+	border-top: 7px solid black;
+}
