@@ -5,7 +5,6 @@
     [jira.storage  :as storage]
     [org.httpkit.server :as httpkit]
     [ring.util.response :as response])
-
   (:gen-class))
 
 

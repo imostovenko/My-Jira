@@ -32,8 +32,6 @@
   (not (not-any? true? coll)))
 
 
-
-
 (defn- editable? [coll]
   #?(:clj  (instance? clojure.lang.IEditableCollection coll)
      :cljs (satisfies? cljs.core.IEditableCollection coll)))

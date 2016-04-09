@@ -15,6 +15,7 @@
                  [http-kit "2.1.19"]
                  [compojure "1.4.0" :exclusions [commos-codec]]
                  [cljs-ajax "0.3.14"]]
+                 ;[com.datomic/datomic-free "0.9.5350"]]
 
 
 

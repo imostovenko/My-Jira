@@ -65,10 +65,21 @@ body {
 .glyphicon {
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 17px;}
+    /*font-size: 17px;*/}
 
 .glyphicon-pencil {
     opacity: 0.8;}
+
+.glyphicon.arrow{
+   opacity: 0.3;
+   margin: 0px;}
+
+.glyphicon.arrow.pressed {
+    opacity: 1;
+    color: red;}
+
+.column-title {
+    margin-right: 10px;}
 
 
 .form-group.required .control-label:before {
@@ -223,21 +234,8 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   }
+
+.pressed {
+    color: red}
 */
 
-.arrow-up {
-	width: 0;
-	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-bottom: 7px solid black;
-}
-
-.arrow-down {
-	width: 0;
-	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-
-	border-top: 7px solid black;
-}
