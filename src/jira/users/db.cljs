@@ -20,7 +20,7 @@
 (defonce current-u (atom nil))
 (defonce selected-p (atom nil))
 
-
+(def u-role {user "user" admin "admin"})
 
 ;;;; -------- GET -----------
 
@@ -109,10 +109,11 @@
      (or (empty? login) (empty? pass))
      {:error "Login and password can't be empty. Please specify!"}
      :else
-     (do
-       (swap! users assoc (next-u-id){:login login :password pass :role role})
-       (login-u! login pass)
-       @current-u))))
+     (let [id (next-u-id)]
+       (do
+         (swap! users assoc id {:id id :login login :password pass :role role})
+         (login-u! login pass)
+         @current-u)))))
 
 
 
@@ -142,19 +143,9 @@
     (swap! users assoc-in [(u-login->id login) :password] new-pass)))
 
 
-(defn set-admin!
-  [login]
-  (if (u-exists? login)
-    (swap! users assoc-in [(u-login->id login) :role] "admin")
-    {:error (str/join ["User with such login:" login "doesn't exist"])}))
-
-(defn revoke-admin!
-  [login]
-  (if (u-exists? login)
-    (swap! users assoc-in [(u-login->id login) :role] "user")
-    {:error (str/join ["User with such login:" login "doesn't exist"])}))
-
-
+(defn update-u!
+  [id new-login new-pass]
+  (swap! users assoc id {:id id :login new-login :password new-pass}))
 
 
 
@@ -162,7 +153,7 @@
 ;;;;---------DELETE ------------------------
 
 (defn delete-u!
-  [login]
-  (if (u-exists? login)
-    (swap! users dissoc (u-login->id login))
-    {:error (str/join ["User with such login:" login "doesn't exist, so nothing to delete!"])}))
+  [id]
+  (if (u-exists? (u-id->login id))
+    (swap! users dissoc id)
+    {:error (str/join ["User with such login:" (u-id->login id) "doesn't exist, so nothing to delete!"])}))

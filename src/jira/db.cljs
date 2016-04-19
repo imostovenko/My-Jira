@@ -10,7 +10,15 @@
 
 (enable-console-print!)
 
+;;;;---------EN-UA-RU ---------
 
+(defonce lang (atom "EN"))
+(defn change-lang [language]
+  (reset! lang language))
+
+
+
+;;;; --------DB---------------
 
 (defn collect-db []
   {:users    @udb/users

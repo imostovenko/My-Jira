@@ -11,6 +11,7 @@
 
 
 
+
 (declare alert-error)
 (rum/defc alert-error
   [alert-message on-alert-dismiss]
@@ -37,6 +38,24 @@
    [:h3 title]
    [:a.close {:on-click on-close-fn} "x"]])
 
+
+(declare popup-footer)
+(rum/defc popup-footer
+  [on-submit-fn on-dismiss-fn on-delete-fn]
+  [:div.popup-footer
+   [:div
+    [:button.btn.btn-danger.pull-left
+     {:type     "button"
+      :on-click #((on-delete-fn) (on-dismiss-fn))}
+     "Delete"]
+    [:button.btn.btn-default
+     {:type     "button"
+      :on-click on-dismiss-fn}
+     "Cancel"]
+    [:button.btn.btn-success
+     {:type     "submit"
+      :on-click #((on-submit-fn) (on-dismiss-fn))}
+     "Save"]]])
 
 
 (declare my-btn-group)

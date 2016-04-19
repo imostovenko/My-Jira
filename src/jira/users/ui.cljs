@@ -2,7 +2,6 @@
   (:require
     [jira.users.db :as udb]
     [jira.components :as comp]
-
     [jira.admin.ui :as a]
 
     [rum.core :include-macros true :as rum]
@@ -51,8 +50,8 @@
           :on-click on-submit}
          "Sign In " [:span.glyphicon.glyphicon-star-empty]]
         [:span.pull-left
-         [:a {:on-click #(reset! udb/need-registration? 1)
-               :vertical-align "middle"}
+         [:a {:on-click #(reset! udb/need-registration? 1)}
+               ;:vertical-align "middle"}
           "Sign Up"]]]
        (when show-error?
          (comp/alert-error @error on-alert-dismiss))]))
@@ -137,7 +136,9 @@
   [user]
   [:p.navbar-text.navbar-right "Signed in as "
    [:a.navbar-link {:href     "#"
-                    :on-click #(udb/logout-u!)}
+                    :on-click #(do
+                                (udb/logout-u!)
+                                (reset! a/show-admin-page? false))}
     [:i (str/capitalize user)]
     [:span.glyphicon.glyphicon-log-out]]])
 
@@ -164,6 +165,7 @@
         {:href "#"}
         "Jira"]]
       [:div.navbar-collapse.collapse {:id "navbar"}
-       [:div.navbar-form.navbar-right
-        (when (udb/is-admin? user) (a/admin-page-toggle))
-        (logout-form user)]]]]))
+       [:ul.nav.navbar-nav.navbar-right
+        ;(comp/language-toggle)
+        [:li (when (udb/is-admin? user) (a/admin-page-toggle))]
+        [:li (logout-form user)]]]]]))

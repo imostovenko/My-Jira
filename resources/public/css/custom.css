@@ -1,11 +1,30 @@
 /* some custom style here to overwrite bootstrap min.css */
 
-/*
-body {
-    position: relative;}
-*/
+/* COLORS */
 
-.navbar-form{
+
+.white{
+    color: #fff;}
+
+.red {
+    color: red; }
+
+.orange {
+    color: orange;}
+
+.green {
+    color: #5cb85c;}
+
+.blue {
+    color: #337AB7;}
+
+
+/*
+
+
+
+
+.navbar-right{
     margin-right: 15px;}
 
 .jumbotron {
@@ -17,6 +36,13 @@ body {
 
 .btn-lg {
     font-size: 20px;}
+
+#admin {
+ margin-top: 60px;}
+
+#selected {
+    border: 2px solid red;}
+
 
 
 
@@ -62,6 +88,9 @@ body {
     margin-bottom: 30px;}
 
 
+/* ICONS */
+
+
 .glyphicon {
     margin-left: 5px;
     margin-right: 5px;
@@ -82,6 +111,19 @@ body {
     margin-right: 10px;}
 
 
+.dashboard-icon {
+    font-size: 120px;
+    color: #ADACAC;}
+
+.dashboard-icon.pressed {
+    font-size: 120px;
+    color: #FFA900;}
+
+
+
+
+/* FORMS */
+
 .form-group.required .control-label:before {
     color: #d00;
     content: "*";
@@ -92,20 +134,6 @@ body {
 .modal-footer{
     margin-bottom: -15px;}
 
-.white{
-    color: #fff;}
-
-.red {
-    color: red; }
-
-.orange {
-    color: orange;}
-
-.green {
-    color: #5cb85c;}
-
-.blue {
-    color: #337AB7;}
 
 #hello {
     margin-top: 42px;}

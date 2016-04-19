@@ -18,13 +18,13 @@
 
 (declare conf-p-delete)
 (rum/defc conf-p-delete
-  [p-id on-dismiss-fn]
+  [p-id on-close-fn]
   (let [on-submit #(pdb/delete-p! p-id)
         popup-header-title (str "Delete Project - " (pdb/get-p-title p-id) " , id:" p-id)]
     (when conf-p-del
       [:div.overlay
        [:div.popup
-        (comp/popup-header popup-header-title on-dismiss-fn)
+        (comp/popup-header popup-header-title on-close-fn)
         [:div.popup-content
          [:p "Are you sure want to delete the project?
          All it's tickets will be deleted as well and this can not be undone."]]
@@ -32,11 +32,11 @@
          [:div
           [:button.btn.btn-default
            {:type     "button"
-            :on-click on-dismiss-fn}
+            :on-click on-close-fn}
            "Cancel"]
           [:button.btn.btn-danger
            {:type     "submit"
-            :on-click #((on-submit) (on-dismiss-fn))}
+            :on-click #((on-submit) (on-close-fn))}
            "Delete"]]]]])))
 
 
@@ -129,7 +129,7 @@
 
 (declare edit-prj-popup)
 (rum/defcs edit-prj-popup < (rum/local {:title nil :descr nil} ::prj)
-  [state p-id on-close-fn #_conf-p-delete-fn]
+  [state p-id on-close-fn conf-p-delete-fn]
   (println "modal editPrj:" (pr-str state))
   (let [v (::prj state)
         on-change (fn [key e]
@@ -176,7 +176,7 @@
        [:div
         [:button.btn.btn-danger.pull-left
          {:type     "button"
-          :on-click #((conf-p-delete)(on-close-fn))}
+          :on-click #((conf-p-delete-fn) (on-close-fn))}
          "Delete"]
         [:button.btn.btn-default
          {:type     "button"
@@ -197,36 +197,34 @@
   [state p-id]
   (println "modal prjCard" (pr-str state))
   (let [state state p-id p-id
-        id p-id
         show-local? (::show-modal? state)
         toggle-modal #(swap! show-local? not)
-
         show-conf-delete? (::show-conf-delete? state)
         toggle-conf #(swap! show-conf-delete? not)]
 
     [:div.col-md-4
      [:div.card
-      [:h2 (pdb/get-p-title id)
-       (when (= @udb/current-u (pdb/who-is-author id))
+      [:h2 (pdb/get-p-title p-id)
+       (when (= @udb/current-u (pdb/who-is-author p-id))
          [:span.pull-right
           [:a.navbar-link
            {:on-click toggle-modal}
            [:span.glyphicon.glyphicon-pencil.orange]]])]
 
       (when @show-local?
-        (edit-prj-popup id toggle-modal toggle-conf))
+        (edit-prj-popup p-id toggle-modal toggle-conf))
 
       (when @show-conf-delete?
-        (conf-p-delete id toggle-conf))
+        (conf-p-delete p-id toggle-conf))
 
-      [:h4 [:span.small "Created by "] (str/capitalize (pdb/who-is-author id))]
-      [:p (pdb/get-p-descr id)]
+      [:h4 [:span.small "Created by "] (str/capitalize (pdb/who-is-author p-id))]
+      [:p (pdb/get-p-descr p-id)]
 
       [:button.btn.btn-default
        {:type     "button"
-        :on-click #(pdb/select-p id)}
+        :on-click #(pdb/select-p p-id)}
        "View tickets "
-       [:span.badge (pdb/count-p-tickets id)]]]]))
+       [:span.badge (pdb/count-p-tickets p-id)]]]]))
 
 
 
@@ -239,9 +237,6 @@
     [:div.container.card-section
      (if (empty? projects)
        (comp/warning "You don't have projects yet. Please create your first one.")
-       ;[:div.alert.alert-warning {:role "alert"}
-       ; [:strong "You don't have projects yet. "]
-       ; "Please create your first one."]
        (for [p-id projects]
          (prj-card p-id)))]))
 
