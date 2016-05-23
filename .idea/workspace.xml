@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bbdda93-6b60-4603-8d13-2afbda5eec33" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jira/dat.clj" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__commons_codec_1_10.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/replstate.xml" afterPath="$PROJECT_DIR$/.idea/replstate.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB.edn" afterPath="$PROJECT_DIR$/DB.edn" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figwheel_server.log" afterPath="$PROJECT_DIR$/figwheel_server.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jira.iml" afterPath="$PROJECT_DIR$/jira.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/public/css/custom.css" afterPath="$PROJECT_DIR$/resources/public/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/public/index.html" afterPath="$PROJECT_DIR$/resources/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/admin/ui.cljs" afterPath="$PROJECT_DIR$/src/jira/admin/ui.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/components.cljs" afterPath="$PROJECT_DIR$/src/jira/components.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/db.cljs" afterPath="$PROJECT_DIR$/src/jira/db.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/projects/ui.cljs" afterPath="$PROJECT_DIR$/src/jira/projects/ui.cljs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/projects/db.cljs" afterPath="$PROJECT_DIR$/src/jira/projects/db.cljs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/server.clj" afterPath="$PROJECT_DIR$/src/jira/server.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/users/db.cljs" afterPath="$PROJECT_DIR$/src/jira/users/db.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/users/ui.cljs" afterPath="$PROJECT_DIR$/src/jira/users/ui.cljs" />
     </list>
     <ignored path="jira.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,66 +34,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ui.cljs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/jira/admin/ui.cljs">
+      <file leaf-file-name="dat.clj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/jira/dat.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="375">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="components.cljs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jira/components.cljs">
+      <file leaf-file-name="core.cljs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jira/core.cljs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-              <folding>
-                <element signature="e#237#503#0" expanded="false" />
-                <element signature="e#524#607#0" expanded="false" />
-                <element signature="e#1748#2956#0" expanded="false" />
-                <element signature="e#2982#3471#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ui.cljs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jira/projects/ui.cljs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1470">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="585">
+              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.cljs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jira/admin/db.cljs">
+      <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.cljs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jira/users/db.cljs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/public/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,27 +79,31 @@
       <list>
         <option value="$PROJECT_DIR$/src/jira/Bakery.clj" />
         <option value="$PROJECT_DIR$/script/repl.clj" />
-        <option value="$PROJECT_DIR$/src/jira/server.clj" />
         <option value="$PROJECT_DIR$/src/jira/db.cljc" />
         <option value="$PROJECT_DIR$/src/jira/util.cljc" />
         <option value="$PROJECT_DIR$/src/jira/storage.clj" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/DB.edn" />
         <option value="$PROJECT_DIR$/src/jira/datom.clj" />
-        <option value="$PROJECT_DIR$/project.clj" />
-        <option value="$PROJECT_DIR$/src/jira/projects/db.cljs" />
         <option value="$PROJECT_DIR$/src/jira/core.cljs" />
         <option value="$PROJECT_DIR$/src/jira/tickets/db.cljs" />
         <option value="$PROJECT_DIR$/src/jira/tickets/ui.cljs" />
         <option value="$PROJECT_DIR$/src/jira/db.cljs" />
         <option value="$PROJECT_DIR$/resources/public/index.html" />
         <option value="$PROJECT_DIR$/resources/public/css/custom.css" />
-        <option value="$PROJECT_DIR$/src/jira/users/ui.cljs" />
         <option value="$PROJECT_DIR$/src/jira/components.cljs" />
         <option value="$PROJECT_DIR$/src/jira/admin/db.cljs" />
         <option value="$PROJECT_DIR$/src/jira/projects/ui.cljs" />
-        <option value="$PROJECT_DIR$/src/jira/users/db.cljs" />
         <option value="$PROJECT_DIR$/src/jira/admin/ui.cljs" />
+        <option value="$PROJECT_DIR$/src/jira/datomic_db.clj" />
+        <option value="$PROJECT_DIR$/src/jira/users/ui.cljs" />
+        <option value="$PROJECT_DIR$/src/jira/projects/db.cljs" />
+        <option value="$PROJECT_DIR$/src/jira/datomic.clj" />
+        <option value="$PROJECT_DIR$/src/jira/server.clj" />
+        <option value="$PROJECT_DIR$/src/jira/dat.cljs" />
+        <option value="$PROJECT_DIR$/src/jira/users/db.cljs" />
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/jira/dat.clj" />
       </list>
     </option>
   </component>
@@ -288,7 +255,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -365,51 +331,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tickets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="new-jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="new-jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -431,6 +353,7 @@
       </pane>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,7 +375,7 @@
       <recent name="$PROJECT_DIR$/resources/public/fonts" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1461100100694">{:repl-history {:ide [], :local [&quot;(into #{} :a)&quot; &quot;(contains? [:A :B] :a)&quot; &quot;(contains? [:A :B] :A)&quot; &quot;(contains? #{:A :B} :A)&quot; &quot;(nil {:a 1})&quot; &quot;;(-&gt;\n;  {:users []}\n;  (super-filter))\n\n@tickets\n;&quot; &quot;tickets&quot; &quot;()&quot; &quot;(jira.util/filter-vals even? {:a 1 :b 2})&quot; &quot;(jira.util/filter-vals even? {:a 1 :b 2 :c 4})&quot; &quot;filter even?&quot; &quot;(filter even? [1 2 3 4])&quot; &quot;(filter even? {:a 1 :b 2})&quot; &quot;@tickets&quot; &quot;(-&gt;&gt; @tickets vals (apply concat))&quot; &quot;(-&gt;&gt; @tickets vals concat)&quot; &quot;(-&gt;&gt; @tickets vals concat (group-by :assignee))&quot; &quot;(-&gt;&gt; @tickets vals concat (group-by :assignee) cljs.pprint/pprint)&quot; &quot;(-&gt;&gt; @tickets vals concat (group-by :assignee) keys \n  cljs.pprint/pprint)&quot; &quot;(-&gt;&gt; @tickets vals concat (group-by :assignee) keys \n  cljs.pprint/print\n  )&quot; &quot;(-&gt;&gt; @tickets vals concat (group-by :assignee) keys)&quot; &quot;;(-&gt;&gt; @tickets vals concat (group-by :assignee) keys)\n(group-by even? [1 2 3 4 5])\n;&quot; &quot;;(-&gt;&gt; @tickets vals concat (group-by :assignee) keys)\n(group-by even? [1 2 3 4 5])\n&quot; &quot;(group-by even? [1 2 3 4 5])\n&quot; &quot;(-&gt;&gt; @tickets vals (group-by :assignee) keys)&quot; &quot;(vals {:A [{} {}]})&quot; &quot;(concat (vals {:A [{} {}]}))&quot; &quot;(apply concat (vals))&quot; &quot;a&quot; &quot;assoc-test&quot; &quot;(apply concat (vals {:A [{} {}]}))&quot; &quot;(group-by even? [1 2 3 4 5])&quot; &quot;\n-sorted-seq-from&quot; &quot;sdfsd&quot; &quot;\n(group-by even? [1 2 3 4 5])\n&quot; &quot;(in-ns 'jira.db\n  )&quot; &quot;(in-ns 'jira.db)\n  &quot; &quot;(status)&quot; &quot;(in-ns 'jira.db)&quot; &quot;(login-u! \&quot;ira\&quot; \&quot;123\&quot;)&quot; &quot;@current-u&quot; &quot;(get-p 3)&quot; &quot;(get-p 1)&quot; &quot;(get-tt-of-p 1)&quot; &quot;(select-keys @tickets #{4 6 7})&quot; &quot;(search \&quot;R\&quot; {7 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 1, :status :0, :id 7, :subj \&quot;sdf\&quot;, :assignee 2}, 4 {:description \&quot;\&quot;, :creator 1, :prior :1, :type :0, :project 1, :status :2, :id 4, :subj \&quot;rr\&quot;, :assignee 2}, 6 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 1, :status :0, :id 6, :subj \&quot;sd\&quot;, :assignee 2}})\n  &quot; &quot;(in-ns 'jira.tickets.db)&quot; &quot;(super-filter {:statuses :0})&quot; &quot;(-&gt;&gt; (tdb/get-tt-of-p @pdb/selected-p)\n  (select-keys @tdb/tickets))&quot; &quot;(-&gt;&gt; (get-tt-of-p @pdb/selected-p)\n  (select-keys @tickets))&quot; &quot;(select-keys (get-tt-of-p @pdb/selected-p) @tickets)&quot; &quot;(select-keys (get-tt-of-p 3) @tickets)&quot; &quot;(select-keys (get-tt-of-p 5) @tickets)&quot; &quot;(select-keys (get-tt-of-p 2) @tickets)&quot; &quot;(select-keys @tickets (get-tt-of-p 2))&quot; &quot;(super-filter {:statuses :0} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(super-filter {:statuses #{:0}} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(super-filter {:assignee #{1}} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(super-filter {:users #{1}} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(super-filter {:users #{2}} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(super-filter \&quot;k\&quot; {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(search \&quot;k\&quot; {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(search \&quot;d\&quot; {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}})\n  &quot; &quot;(vals (search \&quot;d\&quot; {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}}))\n  &quot; &quot;(vals(super-filter {:users #{2}} {8 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 8, :subj \&quot;sd\&quot;, :assignee 2}, 11 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 11, :subj \&quot;gdsh\&quot;, :assignee 2}, 12 {:description \&quot;\&quot;, :creator 1, :prior :0, :type :0, :project 2, :status :0, :id 12, :subj \&quot;sdsd\&quot;, :assignee 2}}))\n  &quot; &quot;@pdb/proejcts&quot; &quot;@pdb/projects&quot; &quot;(in-ns 'jira.projects.db)&quot; &quot;@projects&quot; &quot;(set-admin! \&quot;ira\&quot;)&quot; &quot;@jira.projects.db/projects&quot; &quot;(in-ns 'jira.admin.ui)&quot; &quot;(reset! selected-type \&quot;projects\&quot;)&quot; &quot;@selected-type&quot; &quot;(sort-by :login &lt;)&quot; &quot;(sort-by :login &lt; @users)&quot; &quot;(sort-by :login &gt; @users)&quot; &quot;(sort-by :login &gt; (vals @users))&quot; &quot;(sort-by :role &gt; (vals @users))&quot; &quot;(sort-by :role &lt; (vals @users))&quot; &quot;(:login (sort-by :role &lt; (vals @users)))&quot; &quot;(:login (first (sort-by :role &lt; (vals @users))))&quot; &quot;(reset! users {1 {:id 1 :login \&quot;ira\&quot;, :password \&quot;123\&quot;, :role \&quot;admin\&quot;}, 2 {:id 2 :login \&quot;olga\&quot;, :password \&quot;123\&quot;, :role \&quot;user\&quot;}, 3 {:id 3 :login \&quot;misha\&quot;, :password \&quot;123\&quot;, :role \&quot;user\&quot;}})\n  &quot; &quot;(for [i ({1} {2} {3})] (println i))&quot; &quot;(for [i ({1 d} {2 b } {3 a})] (println i))&quot; &quot;(for [user (sort-by :role &lt; (vals @users))] (println user))&quot; &quot;(for [user (sort-by :role &gt; (vals @users))] (println user))&quot; &quot;(for [user (sort-by :role &gt; (vals @users))]  user)&quot; &quot;(for [user (sort-by :role &gt; (vals @users))]  (print user))&quot; &quot;(:id {:id 2, :login olga, :password 123, :role user})&quot; &quot;(:login {:id 2, :login olga, :password 123, :role user})&quot; &quot;(in-ns 'jira.users.db)&quot; &quot;@users&quot; &quot;(update-u! 1 \&quot;iryna\&quot; \&quot;123\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! \&quot;1\&quot; \&quot;iryna\&quot; \&quot;123\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! \&quot;1\&quot; \&quot;iryna\&quot; \&quot;1234\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! 1 \&quot;iryna\&quot; \&quot;1234\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! \&quot;1\&quot; \&quot;irna\&quot; \&quot;1234\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! 1 \&quot;irna\&quot; \&quot;1234\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! 1 \&quot;ira\&quot; \&quot;1234\&quot; \&quot;admin\&quot;)&quot; &quot;(update-u! 1 \&quot;ira\&quot; \&quot;123\&quot; \&quot;admin\&quot;)&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1464044140419">{:repl-history {:ide [], :local [&quot;(in-ns 'jira.server)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;ira\&quot;\n      :user/pass \&quot;123\&quot;}])&quot; &quot;(let [db (d/db conn)\n      f (fn [m] (-&gt;&gt; m :db/ident namespace (#(.startsWith % \&quot;db\&quot;)) not))]\n (-&gt;&gt;\n   (d/q '[:find [?e ...]\n          :in $ ?f\n          :where\n          [?e :db/ident]]\n     db f)\n   (d/pull-many db '[*])\n   (filter f)))&quot; &quot;(d/pull conn '[*] :user/login)&quot; &quot;@(d/pull conn '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] 17592186045436)&quot; &quot;(d/pull (d/db conn) '[*] {:user/login \&quot;ira\&quot;})&quot; &quot;(d/pull (d/db conn) '[:user/login]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/pass]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;ira\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin true}])&quot; &quot;(d/pull (d/db conn) '[*]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isadmin]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;misha\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045439)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;olga\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            @(d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e \&quot;ira\&quot;]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;@(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          '(d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e 17592186045436]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find c?\n                  :where [?c :user/login]]))&quot; &quot; (d/q '[:find c?\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/pass]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    db)&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    db)&quot; &quot; (d/q '[:find ?e\n        :in $\n        :where [?e :user/login]]\n    db)&quot; &quot; (flatten (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            db))&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;ira\&quot;]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;olga\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where] \n      (  [?e :user/login \&quot;olga\&quot;]\n         [?e :user/login \&quot;ira\&quot;])\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       ([?e :user/login \&quot;olga\&quot;]\n        [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       [?e :user/login \&quot;olga\&quot;]\n       [?e :user/login \&quot;ira\&quot;]]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;]\n           [?e :user/login \&quot;misha\&quot;])] \n      db)\n  &quot; &quot;(d/pull db [:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;]) \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db)\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;(d/pull db '[*] 17592186045436)&quot; &quot;(d/pull db '[*]\n  @(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (first(d/q '[:find [?e ...]\n               :in $\n               :where [?e :user/login \&quot;ira\&quot;]]\n          db)))\n  &quot; &quot;(map (d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(in-ns 'jira.datomic-db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;alena\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    db))&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;kate\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull @(db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    @(db)))&quot; &quot;(db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;test-user\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;@(d/transact conn\n   '[[:db/retract \&quot;kate\&quot;]])&quot; &quot;@(d/transact conn\n   '[:db/retract \&quot;kate\&quot;])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045445]])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045447]])&quot; &quot;(map #(d/pull (db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    (db)))&quot; &quot;(delete-user 17592186045451)&quot; &quot;(merge {:a 1 :b 2} {:a 4})&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045457)&quot; &quot;(delete-user 17592186045443)&quot; &quot;(delete-user 17592186045441)&quot; &quot;(get-users-ids)&quot; &quot;(delete-user 17592186045436)&quot; &quot;(in-ns 'jira.users.db)&quot; &quot;(add-user \&quot;test\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045463)&quot; &quot;(jira.projects.db/selected-p)&quot; &quot;jira.projects.db/selected-p&quot; &quot;@jira.projects.db/selected-p&quot; &quot;(in-ns 'jira.projects.db)&quot; &quot;@selected-p&quot; &quot;selected-p&quot; &quot;(in-ns 'jira.datomic)&quot; &quot;(create-prj \&quot;one\&quot; \&quot;one descr\&quot;)&quot; &quot;(create-prj \&quot;two\&quot; \&quot;two descr\&quot;)&quot; &quot;(get-projects-deep)&quot; &quot;(get-users-deep)&quot; &quot;(get-projects-ids)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.figw">
     <configuration default="false" name="core" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
       <module name="jira" />
@@ -749,27 +672,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13130128" sideWeight="0.50277776" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13012049" sideWeight="0.50277776" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31330472" sideWeight="0.48243243" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="REPL" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37768242" sideWeight="0.5203252" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10843374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31330472" sideWeight="0.5175676" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.110843375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37768242" sideWeight="0.4796748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15307583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15808298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.01686747" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0373494" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -800,36 +723,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/jira/core.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/core.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -975,7 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/figwheel_server.log" />
     <entry file="file://$PROJECT_DIR$/.lein-repl-history" />
     <entry file="file://$PROJECT_DIR$/DB-backup.edn">
       <provider selected="true" editor-type-id="text-editor">
@@ -1005,13 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/storage.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DB.edn">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1027,19 +912,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jira/datom.clj" />
-    <entry file="file://$PROJECT_DIR$/src/jira/db.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojurescript/1.7.170/clojurescript-1.7.170.jar!/cljs/core.cljs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="258" column="37" selection-start-line="258" selection-start-column="37" selection-end-line="258" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,55 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/server.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/core.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/public/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/projects/db.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/users/ui.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,10 +934,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/projects/ui.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/public/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/figwheel_server.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="1794" column="41" selection-start-line="1794" selection-start-column="41" selection-end-line="1794" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/storage.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/datomic_db.clj" />
     <entry file="file://$PROJECT_DIR$/src/jira/tickets/ui.cljs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1177">
-          <caret line="217" column="46" selection-start-line="182" selection-start-column="8" selection-end-line="217" selection-end-column="46" />
+        <state relative-caret-position="1866">
+          <caret line="182" column="42" selection-start-line="182" selection-start-column="42" selection-end-line="182" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1123,25 +981,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/projects/ui.cljs">
+    <entry file="file://$PROJECT_DIR$/src/jira/server.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1470">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/users/db.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jira/components.cljs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
+        <state relative-caret-position="630">
           <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
           <folding>
             <element signature="e#237#503#0" expanded="false" />
@@ -1154,8 +1004,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jira/admin/ui.cljs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="330">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/datomic.clj" />
+    <entry file="file://$PROJECT_DIR$/src/jira/users/ui.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/dat.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/db.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/users/db.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="110" column="64" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/projects/db.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/core.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/dat.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>

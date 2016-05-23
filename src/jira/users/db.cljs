@@ -1,11 +1,12 @@
 (ns jira.users.db
   (:require
     [ajax.core :refer [GET POST]]
+    ;[jira.dat :as dat]
     [clojure.string :as str]
     [jira.util :as u :refer [any?]]))
 
 
-(enable-console-print!)
+;(enable-console-print!)
 
 
 
@@ -20,7 +21,7 @@
 (defonce current-u (atom nil))
 (defonce selected-p (atom nil))
 
-(def u-role {user "user" admin "admin"})
+(def u-role {:user "user" :admin "admin"})
 
 ;;;; -------- GET -----------
 
@@ -109,6 +110,7 @@
      (or (empty? login) (empty? pass))
      {:error "Login and password can't be empty. Please specify!"}
      :else
+     ;(dat/add-user login pass))))
      (let [id (next-u-id)]
        (do
          (swap! users assoc id {:id id :login login :password pass :role role})

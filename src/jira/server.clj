@@ -1,12 +1,18 @@
 (ns jira.server
   (:use [compojure.core :only [defroutes GET POST]])
   (:require
+    [datomic.api :as d]
     [compojure.route    :as route]
     [jira.storage  :as storage]
     [org.httpkit.server :as httpkit]
     [ring.util.response :as response])
   (:gen-class))
 
+
+
+(def url (str "datomic:free://localhost:4334/jira"))
+(def conn (d/connect url))
+(def db (d/db conn))
 
 (defn req->body [req]
   (-> req :body slurp))

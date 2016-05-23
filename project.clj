@@ -12,16 +12,17 @@
                  [figwheel-sidecar "0.5.0"]
                  [com.cognitect/transit-clj  "0.8.285"]
                  [com.cognitect/transit-cljs "0.8.232"]
+                 [com.datomic/datomic-free "0.9.5350"]
                  [http-kit "2.1.19"]
                  [compojure "1.4.0" :exclusions [commos-codec]]
                  [cljs-ajax "0.3.14"]]
-                 ;[com.datomic/datomic-free "0.9.5350"]]
+
 
 
 
 
   :main jira.server
-  :aot [jira.server]
+  ;:aot [jira.server]
 
 
   :plugins [[lein-cljsbuild "1.1.1"]
