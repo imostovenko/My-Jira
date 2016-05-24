@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bbdda93-6b60-4603-8d13-2afbda5eec33" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jira/dat.clj" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__commons_codec_1_10.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/replstate.xml" afterPath="$PROJECT_DIR$/.idea/replstate.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB.edn" afterPath="$PROJECT_DIR$/DB.edn" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figwheel_server.log" afterPath="$PROJECT_DIR$/figwheel_server.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jira.iml" afterPath="$PROJECT_DIR$/jira.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/projects/db.cljs" afterPath="$PROJECT_DIR$/src/jira/projects/db.cljs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/dat.clj" afterPath="$PROJECT_DIR$/src/jira/dat.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/server.clj" afterPath="$PROJECT_DIR$/src/jira/server.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jira/users/db.cljs" afterPath="$PROJECT_DIR$/src/jira/users/db.cljs" />
     </list>
     <ignored path="jira.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dat.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dat.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jira/dat.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -54,11 +48,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="server.clj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/jira/server.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -99,10 +103,10 @@
         <option value="$PROJECT_DIR$/src/jira/users/ui.cljs" />
         <option value="$PROJECT_DIR$/src/jira/projects/db.cljs" />
         <option value="$PROJECT_DIR$/src/jira/datomic.clj" />
-        <option value="$PROJECT_DIR$/src/jira/server.clj" />
         <option value="$PROJECT_DIR$/src/jira/dat.cljs" />
         <option value="$PROJECT_DIR$/src/jira/users/db.cljs" />
         <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/jira/server.clj" />
         <option value="$PROJECT_DIR$/src/jira/dat.clj" />
       </list>
     </option>
@@ -301,50 +305,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="new-jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="new-jira" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -375,7 +335,7 @@
       <recent name="$PROJECT_DIR$/resources/public/fonts" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1464044140419">{:repl-history {:ide [], :local [&quot;(in-ns 'jira.server)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;ira\&quot;\n      :user/pass \&quot;123\&quot;}])&quot; &quot;(let [db (d/db conn)\n      f (fn [m] (-&gt;&gt; m :db/ident namespace (#(.startsWith % \&quot;db\&quot;)) not))]\n (-&gt;&gt;\n   (d/q '[:find [?e ...]\n          :in $ ?f\n          :where\n          [?e :db/ident]]\n     db f)\n   (d/pull-many db '[*])\n   (filter f)))&quot; &quot;(d/pull conn '[*] :user/login)&quot; &quot;@(d/pull conn '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] 17592186045436)&quot; &quot;(d/pull (d/db conn) '[*] {:user/login \&quot;ira\&quot;})&quot; &quot;(d/pull (d/db conn) '[:user/login]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/pass]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;ira\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin true}])&quot; &quot;(d/pull (d/db conn) '[*]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isadmin]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;misha\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045439)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;olga\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            @(d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e \&quot;ira\&quot;]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;@(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          '(d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e 17592186045436]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find c?\n                  :where [?c :user/login]]))&quot; &quot; (d/q '[:find c?\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/pass]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    db)&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    db)&quot; &quot; (d/q '[:find ?e\n        :in $\n        :where [?e :user/login]]\n    db)&quot; &quot; (flatten (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            db))&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;ira\&quot;]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;olga\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where] \n      (  [?e :user/login \&quot;olga\&quot;]\n         [?e :user/login \&quot;ira\&quot;])\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       ([?e :user/login \&quot;olga\&quot;]\n        [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       [?e :user/login \&quot;olga\&quot;]\n       [?e :user/login \&quot;ira\&quot;]]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;]\n           [?e :user/login \&quot;misha\&quot;])] \n      db)\n  &quot; &quot;(d/pull db [:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;]) \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db)\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;(d/pull db '[*] 17592186045436)&quot; &quot;(d/pull db '[*]\n  @(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (first(d/q '[:find [?e ...]\n               :in $\n               :where [?e :user/login \&quot;ira\&quot;]]\n          db)))\n  &quot; &quot;(map (d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(in-ns 'jira.datomic-db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;alena\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    db))&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;kate\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull @(db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    @(db)))&quot; &quot;(db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;test-user\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;@(d/transact conn\n   '[[:db/retract \&quot;kate\&quot;]])&quot; &quot;@(d/transact conn\n   '[:db/retract \&quot;kate\&quot;])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045445]])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045447]])&quot; &quot;(map #(d/pull (db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    (db)))&quot; &quot;(delete-user 17592186045451)&quot; &quot;(merge {:a 1 :b 2} {:a 4})&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045457)&quot; &quot;(delete-user 17592186045443)&quot; &quot;(delete-user 17592186045441)&quot; &quot;(get-users-ids)&quot; &quot;(delete-user 17592186045436)&quot; &quot;(in-ns 'jira.users.db)&quot; &quot;(add-user \&quot;test\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045463)&quot; &quot;(jira.projects.db/selected-p)&quot; &quot;jira.projects.db/selected-p&quot; &quot;@jira.projects.db/selected-p&quot; &quot;(in-ns 'jira.projects.db)&quot; &quot;@selected-p&quot; &quot;selected-p&quot; &quot;(in-ns 'jira.datomic)&quot; &quot;(create-prj \&quot;one\&quot; \&quot;one descr\&quot;)&quot; &quot;(create-prj \&quot;two\&quot; \&quot;two descr\&quot;)&quot; &quot;(get-projects-deep)&quot; &quot;(get-users-deep)&quot; &quot;(get-projects-ids)&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1464048455920">{:repl-history {:ide [], :local [&quot;(in-ns 'jira.server)&quot; &quot;@(d/pull conn '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] :user/login)&quot; &quot;(d/pull (d/db conn) '[*] 17592186045436)&quot; &quot;(d/pull (d/db conn) '[*] {:user/login \&quot;ira\&quot;})&quot; &quot;(d/pull (d/db conn) '[:user/login]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/pass]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;ira\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin true}])&quot; &quot;(d/pull (d/db conn) '[*]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isadmin]  17592186045436)&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045436)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;misha\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[:user/login :user/isAdmin]  17592186045439)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;olga\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                 :in $\n                 :where\n                   [?e :user/login]]\n            @(d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find ?e\n                  :in $\n                  :where [?e \&quot;ira\&quot;]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;@(d/pull (d/db conn) '[*] \n          (d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          '(d/q '[:find [?e ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e :user/login]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find [(pull ?e pattern) ...]\n                  :in $\n                  :where [?e 17592186045436]]\n            (d/db conn)\n            [:user/login :user/pass]))&quot; &quot;(d/pull (d/db conn) '[*] \n          (d/q '[:find c?\n                  :where [?c :user/login]]))&quot; &quot; (d/q '[:find c?\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :where [?c :user/login]])&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/pass]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    (d/db conn))&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :project/title]]\n    db)&quot; &quot; (d/q '[:find ?c\n        :in $\n        :where [?c :user/login]]\n    db)&quot; &quot; (d/q '[:find ?e\n        :in $\n        :where [?e :user/login]]\n    db)&quot; &quot; (flatten (d/q '[:find ?e\n                  :in $\n                  :where [?e :user/login]]\n            db))&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;ira\&quot;]]\n      db)&quot; &quot;(d/q '[:find ?e\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;misha\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where [?e :user/login \&quot;olga\&quot;]]\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where] \n      (  [?e :user/login \&quot;olga\&quot;]\n         [?e :user/login \&quot;ira\&quot;])\n      db)&quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       ([?e :user/login \&quot;olga\&quot;]\n        [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       [?e :user/login \&quot;olga\&quot;]\n       [?e :user/login \&quot;ira\&quot;]]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;])]\n      db)\n  &quot; &quot;(d/q '[:find [?e ...]\n       :in $\n       :where \n       (or [?e :user/login \&quot;olga\&quot;]\n           [?e :user/login \&quot;ira\&quot;]\n           [?e :user/login \&quot;misha\&quot;])] \n      db)\n  &quot; &quot;(d/pull db [:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[:user/login :user/pass]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;])] \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]]\n         :in $\n         :where \n          (or [?e :user/login \&quot;olga\&quot;]\n              [?e :user/login \&quot;ira\&quot;]\n              [?e :user/login \&quot;misha\&quot;]) \n        db))\n  &quot; &quot;(d/pull db '[*]\n  '(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db))\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login]]\n        db)\n  &quot; &quot;\n  (d/q '[:find ?e\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db)\n  &quot; &quot;(d/pull db '[*] 17592186045436)&quot; &quot;(d/pull db '[*]\n  @(d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (d/q '[:find [?e ...]\n          :in $\n          :where [?e :user/login \&quot;ira\&quot;]]\n        db))\n  &quot; &quot;(d/pull db '[*]\n  (first(d/q '[:find [?e ...]\n               :in $\n               :where [?e :user/login \&quot;ira\&quot;]]\n          db)))\n  &quot; &quot;(map (d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login \&quot;ira\&quot;]]\n    db))&quot; &quot;(in-ns 'jira.datomic-db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;alena\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull db '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    db))&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;kate\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;(map #(d/pull @(db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    @(db)))&quot; &quot;(db)&quot; &quot;@(d/transact conn\n   '[{:db/id #db/id[:db.part/user] \n      :user/login \&quot;test-user\&quot;\n      :user/pass \&quot;123\&quot;\n      :user/isAdmin false}])&quot; &quot;@(d/transact conn\n   '[[:db/retract \&quot;kate\&quot;]])&quot; &quot;@(d/transact conn\n   '[:db/retract \&quot;kate\&quot;])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045445]])&quot; &quot;@(d/transact conn\n   '[[:db.fn/retractEntity 17592186045447]])&quot; &quot;(map #(d/pull (db) '[*] %)\n  (d/q '[:find [?e ...]\n         :in $\n         :where [?e :user/login]]\n    (db)))&quot; &quot;(delete-user 17592186045451)&quot; &quot;(merge {:a 1 :b 2} {:a 4})&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test-u\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045457)&quot; &quot;(delete-user 17592186045443)&quot; &quot;(delete-user 17592186045441)&quot; &quot;(get-users-ids)&quot; &quot;(delete-user 17592186045436)&quot; &quot;(in-ns 'jira.users.db)&quot; &quot;(add-user \&quot;test\&quot; \&quot;123\&quot;)&quot; &quot;(add-user \&quot;test\&quot; \&quot;1234\&quot;)&quot; &quot;(delete-user 17592186045463)&quot; &quot;(jira.projects.db/selected-p)&quot; &quot;jira.projects.db/selected-p&quot; &quot;@jira.projects.db/selected-p&quot; &quot;(in-ns 'jira.projects.db)&quot; &quot;@selected-p&quot; &quot;selected-p&quot; &quot;(in-ns 'jira.datomic)&quot; &quot;(create-prj \&quot;one\&quot; \&quot;one descr\&quot;)&quot; &quot;(create-prj \&quot;two\&quot; \&quot;two descr\&quot;)&quot; &quot;(get-projects-deep)&quot; &quot;(get-users-deep)&quot; &quot;(get-projects-ids)&quot; &quot;url&quot; &quot;(in-ns 'jira.dat)&quot; &quot;uri&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.figw">
     <configuration default="false" name="core" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
       <module name="jira" />
@@ -673,7 +633,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -681,10 +641,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13012049" sideWeight="0.50277776" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37768242" sideWeight="0.5203252" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37768242" sideWeight="0.5257453" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.110843375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37768242" sideWeight="0.4796748" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37768242" sideWeight="0.47425476" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15808298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -715,7 +675,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -923,6 +885,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -957,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/storage.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jira/datomic_db.clj" />
     <entry file="file://$PROJECT_DIR$/src/jira/tickets/ui.cljs">
       <provider selected="true" editor-type-id="text-editor">
@@ -977,14 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jira/server.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1061,8 +1009,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/storage.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1070,7 +1026,15 @@
     <entry file="file://$PROJECT_DIR$/src/jira/dat.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jira/server.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding />
         </state>
       </provider>
