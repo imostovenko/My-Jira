@@ -54,7 +54,7 @@
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
-              :server-port 8080 ;; default
+              :server-port 1234 ;; default
              ;; :server-ip "127.0.0.1"
 
              :repl true

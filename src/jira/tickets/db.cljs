@@ -165,8 +165,9 @@
 (defn reassign-t!
   [t-id assi]
   (if (udb/u-exists? assi)
-    (do (update-t! t-id :assignee (udb/u-login->id assi))
-        (pdb/add-u-to-p! (:project (get-t t-id)) assi))
+    (do (pdb/add-u-to-p! (:project (get-t t-id)) assi)
+        (update-t! t-id :assignee (udb/u-login->id assi)))
+
     {:error (str/join ["User with login:" assi "doesn't exist, so can't reassign!"])}))
 
 

@@ -12,13 +12,7 @@
 (defonce show-admin-page? (atom false))
 
 
-(declare admin-page-toggle)
-(rum/defc admin-page-toggle
-  []
-  [:p.navbar-text.red
-   [:a.navbar-link {:href "#"
-                    :on-click #(swap! show-admin-page? not)}
-    "ADMIN" [:span.glyphicon.glyphicon-cog]]])
+
 
 (def selected-type (atom "users"))
 
@@ -234,24 +228,7 @@
       [:td "5"]]]]])
 
 
-
 (declare admin-dashboard)
-(rum/defc admin-dashboard
-  []
-  (let [u-count (udb/count-users)
-        p-count (pdb/count-projects)
-        t-count (tdb/count-tickets)]
-    [:div
-      [:h1.page-header "Dashboard"]
-      [:div.row.placeholders
-        (dashboard-card "All Users" u-count "glyphicon-user" "users")
-        (dashboard-card "All Projects" p-count "glyphicon-book" "projects")
-        (dashboard-card "All Tickets" t-count "glyphicon-flag" "tickets")]]))
-
-
-
-
-
 (declare admin-page)
 (rum/defc admin-page < rum/reactive
   []
@@ -260,9 +237,24 @@
    [:div.row
     [:div.col-sm-10.col-sm-offset-1.col-md-10.col-md-offset-1
       (admin-dashboard)
-      (cond
-        (= @selected-type "users") (dashboard-u-table)
-        (= @selected-type "projects") (dashboard-p-table)
-        (= @selected-type "tickets") (dashboard-t-table))]]])
+      (case @selected-type
+        "users" (dashboard-u-table)
+        "projects" (dashboard-p-table)
+        "tickets" (dashboard-t-table))]]])
 
 
+
+(rum/defc admin-dashboard
+  []
+  (let [u-count (udb/count-users)
+        p-count (pdb/count-projects)
+        t-count (tdb/count-tickets)]
+    [:div
+     [:h1.page-header "Dashboard"]
+     [:div.row.placeholders
+      (dashboard-card "All Users" u-count "glyphicon-user" "users")
+      (dashboard-card "All Projects" p-count "glyphicon-book" "projects")
+      (dashboard-card "All Tickets" t-count "glyphicon-flag" "tickets")]]))
+
+
+;j<script iframe-height="600" iframe-width="100%" iframe-src="https://story.mapme.com/72dc1553-3b62-4968-84e5-c6b1b0652b79" src="https://hosting.mapme.com/story-embed.js"></script>

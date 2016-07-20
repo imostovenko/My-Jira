@@ -36,6 +36,11 @@
 
 
 
+
+
+
+
+
 ;;;; Datomic DB connection
 
 (def url (str "datomic:free://localhost:4334/jira"))
@@ -73,6 +78,14 @@
   (let [user [[:db.fn/retractEntity u-id]]]
     (d/transact conn user))
   (get-users-deep))
+
+
+(defn get-u-id [login]
+    (d/q '[:find [?e ...]
+           :in $ ?login
+           :where [?e :user/login ?login]]
+      (db)
+      login))
 
 
 ;;;;-------- PROJECTS --------

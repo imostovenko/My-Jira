@@ -3,7 +3,9 @@
     [jira.users.db :as udb]
     [jira.projects.db :as pdb]
 
+    [jira.text :as tt]
     [jira.components :as comp]
+
 
     [rum.core :include-macros true :as rum]
     [clojure.string :as str]))
@@ -14,7 +16,6 @@
 
 
 (defonce conf-p-del (atom false))
-
 
 (declare conf-p-delete)
 (rum/defc conf-p-delete
@@ -40,8 +41,6 @@
            "Delete"]]]]])))
 
 
-
-
 (declare new-p-popup)
 (rum/defcs new-p-popup <
   (rum/local {:title "" :descr ""})
@@ -64,31 +63,31 @@
                       (on-close-fn)))]
     [:div.overlay
      [:div.popup
-      (comp/popup-header "Create NEW Project" on-close-fn)
+      (comp/popup-header (tt/t :create-prj) on-close-fn)
       [:div.popup-content
        [:form.form-horizontal {:role "form"}
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "prj-title"}
-          "Title:"]
+          (tt/t :title)]
          [:div.col-sm-6
           [:input.form-control
            {:type        "text"
             :id          "prj-title"
-            :placeholder "project title"
+            :placeholder (tt/t :hint-title)
             :value       (:title @v)
             :required    "required"
             :on-change   on-title-change}]]]
         [:div.form-group
          [:label.control-label.col-sm-4
           {:for "prj-descr"}
-          "Description:"]
+          (tt/t :description)]
          [:div.col-sm-6
           [:textarea.form-control
            {:type        "text"
             :id          "prj-descr"
             :rows        "3"
-            :placeholder "short project description"
+            :placeholder (tt/t :hint-description)
             :value       (:descr @v)
             :on-change   on-descr-change}]]]]
        (when show-error?
@@ -98,40 +97,36 @@
         [:button.btn.btn-default
          {:type     "button"
           :on-click on-close-fn}
-         "Cancel"]
+         (tt/t :cancel)]
         [:button.btn.btn-success
          {:type     "submit"
           :on-click on-submit}
-         "Create"]]]]]))
-
-
+         (tt/t :create)]]]]]))
 
 
 (declare title-section)
 (rum/defcs title-section < rum/reactive (rum/local false ::show-modal?)
   [state]
+  ;(rum/react comp/lang)
   (let [show-local? (::show-modal? state)
         toggle-modal #(swap! show-local? not)]
     [:div.jumbotron
      [:div.container
       [:div
-       [:h1#hello "Hello, " (str/capitalize @udb/current-u) " !"]
-       [:p "You can create a new project or go to browse tickets
-     of your existing projects"]
+       [:h1#hello (tt/t :hello) (str/capitalize @udb/current-u) " !"]
+       [:p (tt/t :greeting)]
        [:button.btn.btn-primary.btn-lg
         {:on-click toggle-modal}
-        "Create New Project"]
+        (tt/t :create-new-prj)]
        (when @show-local?
          (new-p-popup toggle-modal))]]]))
 
 
-
-
 (declare edit-prj-popup)
-(rum/defcs edit-prj-popup < (rum/local {:title nil :descr nil} ::prj)
+(rum/defcs edit-prj-popup < (rum/local {:title nil :descr nil})
   [state p-id on-close-fn conf-p-delete-fn]
   (println "modal editPrj:" (pr-str state))
-  (let [v (::prj state)
+  (let [v (:rum/local state)
         on-change (fn [key e]
                     (swap! v assoc key (-> e .-target .-value)))
         on-title-change (partial on-change :title)
@@ -139,7 +134,7 @@
         on-submit #(do (pdb/update-p-descr! p-id (:descr @v))
                        (pdb/update-p-title! p-id (:title @v)))
         ;delete #(db/delete-p! p-id)
-        popup-header-title (str "Edit Project - " (pdb/get-p-title p-id) " , id:" p-id)]
+        popup-header-title (str (tt/t :edit-prj) (pdb/get-p-title p-id) " , id:" p-id)]
     (when (nil? (:descr @v)) (swap! v assoc :descr (pdb/get-p-descr p-id)))
     (when (nil? (:title @v)) (swap! v assoc :title (pdb/get-p-title p-id)))
 
@@ -151,25 +146,25 @@
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "prj-title"}
-          "Title:"]
+          (tt/t :title)]
          [:div.col-sm-6
           [:input.form-control
            {:type        "text"
             :id          "prj-title"
-            :placeholder "project title"
+            :placeholder (tt/t :hint-title)
             :value       (:title @v)
             :required    "required"
             :on-change   on-title-change}]]]
         [:div.form-group
          [:label.control-label.col-sm-4
           {:for "prj-descr"}
-          "Description:"]
+          (tt/t :description)]
          [:div.col-sm-6
           [:textarea.form-control
            {:type        "text"
             :id          "prj-descr"
             :rows        "3"
-            :placeholder "short project description"
+            :placeholder (tt/t :hint-description)
             :value       (:descr @v)
             :on-change   on-descr-change}]]]]]
       [:div.popup-footer
@@ -177,17 +172,15 @@
         [:button.btn.btn-danger.pull-left
          {:type     "button"
           :on-click #((conf-p-delete-fn) (on-close-fn))}
-         "Delete"]
+         (tt/t :delete)]
         [:button.btn.btn-default
          {:type     "button"
           :on-click on-close-fn}
-         "Cancel"]
+         (tt/t :cancel)]
         [:button.btn.btn-success
          {:type     "submit"
           :on-click #((on-submit) (on-close-fn))}
-         "Save"]]]]]))
-
-
+         (tt/t :save)]]]]]))
 
 
 (declare prj-card)
@@ -217,16 +210,14 @@
       (when @show-conf-delete?
         (conf-p-delete p-id toggle-conf))
 
-      [:h4 [:span.small "Created by "] (str/capitalize (pdb/who-is-author p-id))]
+      [:h4 [:span.small (tt/t :created-by) (str/capitalize (pdb/who-is-author p-id))]]
       [:p (pdb/get-p-descr p-id)]
 
       [:button.btn.btn-default
        {:type     "button"
         :on-click #(pdb/select-p p-id)}
-       "View tickets "
+       (tt/t :view-tickets)
        [:span.badge (pdb/count-p-tickets p-id)]]]]))
-
-
 
 
 (declare card-section)
@@ -236,7 +227,7 @@
   (let [projects (pdb/get-u-projects @udb/current-u)]
     [:div.container.card-section
      (if (empty? projects)
-       (comp/warning "You don't have projects yet. Please create your first one.")
+       (comp/warning (tt/t :warn-no-prj))
        (for [p-id projects]
          (prj-card p-id)))]))
 

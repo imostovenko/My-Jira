@@ -4,6 +4,8 @@
     [jira.users.db :as udb]
     [jira.tickets.db :as tdb]
     [jira.projects.db :as pdb]
+
+    [jira.text :as tt]
     [jira.components :as comp]
 
     [rum.core :include-macros true :as rum]
@@ -12,8 +14,6 @@
 
 
 (enable-console-print!)
-
-
 
 
 (declare conf-t-delete)
@@ -40,8 +40,6 @@
          {:type     "submit"
           :on-click #((on-submit) (on-dismiss-fn))}
          "Delete"]]]]]))
-
-
 
 
 (declare new-t-popup)
@@ -81,31 +79,31 @@
     [:div.overlay
      [:div.popup
       [:div.popup-header
-       [:h3 "Create New Ticket"]
+       [:h3 (tt/t :create-new-ticket)]
        [:a.close
         {:on-click on-close-fn}
         "x"]]
       [:div.popup-content
        [:form.form-horizontal
         {:role "form"}
-        (comp/my-btn-group "Type:" :type tdb/t-type on-type-change v)
-        (comp/my-btn-group "Status:" :status tdb/t-status on-status-change v)
-        (comp/my-btn-group "Priority:" :prior tdb/t-prior on-prior-change v)
+        (comp/my-btn-group (tt/t :type) :type tdb/t-type on-type-change v)
+        (comp/my-btn-group (tt/t :status) :status tdb/t-status on-status-change v)
+        (comp/my-btn-group (tt/t :priority) :prior tdb/t-prior on-prior-change v)
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "t-subj"}
-          "Subject:"]
+          (tt/t :subject)]
          [:div.col-sm-6
           [:input.form-control#t-subj
            {:type        "text"
-            :placeholder "ticket subj"
+            :placeholder (tt/t :hint-subject)
             :value       (:subj @v)
             :required    "required"
             :on-change   on-subj-change}]]]
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "users"}
-          "Assignee:"]
+          (tt/t :assignee)]
          [:div.col-sm-6
           [:select.form-control#users
            {:on-change on-assi-change
@@ -115,13 +113,13 @@
         [:div.form-group
          [:label.control-label.col-sm-4
           {:for "t-descr"}
-          "Description:"]
+          (tt/t :ticket-detail)]
          [:div.col-sm-6
           [:textarea.form-control
            {:type        "text"
             :id          "t-descr"
             :rows        "3"
-            :placeholder "ticket description"
+            :placeholder (tt/t :hint-ticket-detail)
             :value       (:descr @v)
             :on-change   on-descr-change}]]]]
        (when show-error? (comp/alert-error @error on-alert-dismiss))]
@@ -130,12 +128,11 @@
         [:button.btn.btn-default
          {:type     "button"
           :on-click on-close-fn}
-         "Cancel"]
+         (tt/t :cancel)]
         [:button.btn.btn-success
          {:type     "submit"
           :on-click on-submit}
-         "Create"]]]]]))
-
+         (tt/t :save)]]]]]))
 
 
 (declare edit-t-popup)
@@ -174,30 +171,30 @@
     [:div.overlay
      [:div.popup
       [:div.popup-header
-       [:h3 "Edit Ticket - " t-id]
+       [:h3 (tt/t :edit-ticket) t-id]
        [:a.close
         {:on-click on-dismiss-fn}
         "x"]]
       [:div.popup-content
        [:form.form-horizontal {:role "form"}
-        (comp/my-btn-group "Type:" :type tdb/t-type on-type-change v)
-        (comp/my-btn-group "Status:" :status tdb/t-status on-status-change v)
-        (comp/my-btn-group "Priority:" :prior tdb/t-prior on-prior-change v)
+        (comp/my-btn-group (tt/t :type) :type tdb/t-type on-type-change v)
+        (comp/my-btn-group (tt/t :status) :status tdb/t-status on-status-change v)
+        (comp/my-btn-group (tt/t :priority) :prior tdb/t-prior on-prior-change v)
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "t-subj"}
-          "Subject:"]
+          (str (tt/t :subject) " :")]
          [:div.col-sm-6
           [:input.form-control#t-subj
            {:type        "text"
-            :placeholder "ticket subj"
+            :placeholder (tt/t :hint-subject)
             :value       (:subj @v)
             :required    "required"
             :on-change   on-subj-change}]]]
         [:div.form-group.required
          [:label.control-label.col-sm-4
           {:for "users"}
-          "Assignee:"]
+          (str (tt/t :assignee) " :")]
          [:div.col-sm-6
           [:select.form-control#users
            {:on-change on-assi-change
@@ -207,13 +204,13 @@
         [:div.form-group
          [:label.control-label.col-sm-4
           {:for "t-descr"}
-          "Description:"]
+          (str (tt/t :ticket-detail) " :")]
          [:div.col-sm-6
           [:textarea.form-control
            {:type        "text"
             :id          "t-descr"
             :rows        "3"
-            :placeholder "ticket description"
+            :placeholder (tt/t :hint-ticket-detail)
             :value       (:descr @v)
             :on-change   on-descr-change}]]]]]
       [:div.popup-footer
@@ -221,16 +218,15 @@
         [:button.btn.btn-danger.pull-left
          {:type     "button"
           :on-click #((delete) (on-dismiss-fn))}
-         "Delete"]
+         (tt/t :delete)]
         [:button.btn.btn-default
          {:type     "button"
           :on-click on-dismiss-fn}
-         "Cancel"]
+         (tt/t :cancel)]
         [:button.btn.btn-success
          {:type     "submit"
           :on-click #((on-submit) (on-dismiss-fn))}
-         "Save"]]]]]))
-
+         (tt/t :save)]]]]]))
 
 
 (declare filter-section)
@@ -238,12 +234,10 @@
   [f-settings]
   (let [f-settings f-settings]
     [:div.container-fluid.filter-section
-     (comp/filter-group f-settings "by Type:" tdb/t-type :types)
-     (comp/filter-group f-settings "by Priority:" tdb/t-prior :priors)
-     (comp/filter-group f-settings "by Status:" tdb/t-status :statuses)
-     (comp/filter-group f-settings "by Assignee:" @udb/users :users)]))
-
-
+     (comp/filter-group f-settings (tt/t :by-type) tdb/t-type :types)
+     (comp/filter-group f-settings (tt/t :by-priority) tdb/t-prior :priors)
+     (comp/filter-group f-settings (tt/t :by-status) tdb/t-status :statuses)
+     (comp/filter-group f-settings (tt/t :by-assignee) @udb/users :users)]))
 
 
 (declare t-line)
@@ -294,11 +288,6 @@
        (conf-t-delete t-id toggle-conf))]))
 
 
-
-
-
-
-
 (declare tickets-lines)
 (rum/defcs tickets-lines <
   (rum/local :id ::key)
@@ -314,18 +303,17 @@
     [:table.table.table-condensed
      [:thead
       [:tr
-       (comp/col-sortable "ID" :id s @K @C)
-       (comp/col-sortable "Type" :type s @K @C)
-       (comp/col-sortable "Priority" :prior s @K @C)
-       (comp/col-sortable "Subject" :subj s @K @C)
-       (comp/col-sortable "Assignee" :assignee s @K @C)
-       (comp/col-sortable "Creator" :creator s @K @C)
-       (comp/col-sortable "Status" :status s @K @C)
-       [:th "Actions"]]]
+       (comp/col-sortable (tt/t :id) :id s @K @C)
+       (comp/col-sortable (tt/t :type) :type s @K @C)
+       (comp/col-sortable (tt/t :priority) :prior s @K @C)
+       (comp/col-sortable (tt/t :subject) :subj s @K @C)
+       (comp/col-sortable (tt/t :assignee) :assignee s @K @C)
+       (comp/col-sortable (tt/t :creator) :creator s @K @C)
+       (comp/col-sortable (tt/t :status) :status s @K @C)
+       [:th (tt/t :actions)]]]
      [:tbody
       (for [ticket sorted-tickets]
         (t-line ticket))]]))
-
 
 
 (declare tickets-table)
@@ -367,11 +355,11 @@
        [:div.container
         [:div.container-fluid.tt-header
          [:div.col-md-4
-          [:h4 [:strong (pdb/get-p-title @pdb/selected-p)] " tickets:"]]
+          [:h4 [:strong (pdb/get-p-title @pdb/selected-p)] (tt/t :tickets)]]
          [:div.col-md-3
           [:input.form-control.pull-right
            {:type        "search"
-            :placeholder "Search by ticket subj"
+            :placeholder (tt/t :hint-search)
             :value       @s-query
             :on-change   on-search-change}]]
          [:div.col-md-3
@@ -380,14 +368,14 @@
            {:type     "checkbox"
             :value    ""
             :on-click toggle-filter}
-           [:span.glyphicon.glyphicon-filter] "Filter  "
+           [:span.glyphicon.glyphicon-filter] (tt/t :filter)
            (when-not nothing-filtered? [:span.badge (count filter-results) " X"])]]
          [:div.col-md-2
           [:button.btn.btn-success
            {:type     "button"
             :on-click toggle-create}
            [:span.glyphicon.glyphicon-plus]
-           "New Ticket"]]]
+           (tt/t :new-ticket)]]]
 
         (when @show-filter?
           (filter-section f-settings))
@@ -395,17 +383,15 @@
         [:div.container-fluid
          (cond
            (true? prj-has-no-tickets?)
-           (comp/warning "No tickets for that project yet.")
+           (comp/warning (tt/t :warn-no-tickets-yet))
 
            (empty? filter-results)
-           (comp/warning "Sorry, no tickets for your selection,
-            try change the filter params.")
+           (comp/warning (tt/t :warn-no-tickets-filter))
 
            (empty? search-results)
            (do
              (reset! show-filter? false)
-             (comp/warning "Sorry, no tickets for your search,
-           try another search params."))
+             (comp/warning (tt/t :warn-no-tickets-search)))
 
            (false? nothing-searched?)
            (do

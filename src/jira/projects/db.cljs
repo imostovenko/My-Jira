@@ -56,7 +56,7 @@
 
 
 (defn get-p
-  "Returns single projects details fo the project ID"
+  "Returns single projects details for the project ID"
   ([p-id]
    (get-p projects p-id))
   ([projects p-id]

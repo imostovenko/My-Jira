@@ -1,8 +1,10 @@
 (ns jira.users.ui
   (:require
     [jira.users.db :as udb]
+
+
+    [jira.text :as tt]
     [jira.components :as comp]
-    [jira.admin.ui :as a]
 
     [rum.core :include-macros true :as rum]
     [clojure.string :as str]
@@ -57,8 +59,6 @@
          (comp/alert-error @error on-alert-dismiss))]))
 
 
-
-
 (declare registration-form)
 (rum/defcs registration-form < (rum/local {:e "" :p ""})
                                (rum/local "" ::error)
@@ -105,16 +105,12 @@
        (comp/alert-error @error on-alert-dismiss))]))
 
 
-
-
 (declare login-footer)
 (rum/defc login-footer
   []
   [:div.bottom-align-text.footer
    [:hr]
    [:p "© Mostovenko, 2016"]])
-
-
 
 
 (declare login-section)
@@ -129,43 +125,13 @@
    (login-footer)])
 
 
-
-
 (declare logout-form)
 (rum/defc logout-form
   [user]
-  [:p.navbar-text.navbar-right "Signed in as "
+  [:p.navbar-text.navbar-right
+   (tt/t :loged-in)
    [:a.navbar-link {:href     "#"
-                    :on-click #(do
-                                (udb/logout-u!)
-                                (reset! a/show-admin-page? false))}
+                    :on-click #(udb/logout-u!)}
+                                ;(reset! a/show-admin-page? false))}
     [:i (str/capitalize user)]
     [:span.glyphicon.glyphicon-log-out]]])
-
-
-
-(declare navigation)
-(rum/defc navigation < rum/reactive
-  []
-  (let [user (rum/react udb/current-u)]
-    [:nav.navbar.navbar-inverse.navbar-fixed-top
-     [:div.container-fluid
-      [:div.navbar-form.navbar-header
-       [:button {:type          "button"
-                 :class         "navbar-toggle collapsed"
-                 :data-toggle   "collapse"
-                 :data-target   "#navbar"
-                 :aria-expanded "false"
-                 :aria-controls "navbar"}
-        [:span.sr-only "Toggle navigation"]
-        [:span.icon-bar]
-        [:span.icon-bar]
-        [:span.icon-bar]]
-       [:a.navbar-brand
-        {:href "#"}
-        "Jira"]]
-      [:div.navbar-collapse.collapse {:id "navbar"}
-       [:ul.nav.navbar-nav.navbar-right
-        ;(comp/language-toggle)
-        [:li (when (udb/is-admin? user) (a/admin-page-toggle))]
-        [:li (logout-form user)]]]]]))

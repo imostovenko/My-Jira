@@ -10,8 +10,6 @@
 (enable-console-print!)
 
 
-
-
 (declare alert-error)
 (rum/defc alert-error
   [alert-message on-alert-dismiss]
@@ -27,7 +25,6 @@
 (rum/defc warning
   [warning-message]
   [:div.alert.alert-warning warning-message])
-
 
 
 
@@ -127,3 +124,5 @@
      [:span.glyphicon.glyphicon-chevron-down.arrow
       {:on-click #(s-fn column-key <)
        :class (when (and (= K column-key) (= C <)) "pressed")}]]))
+
+

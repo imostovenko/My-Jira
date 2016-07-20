@@ -2,6 +2,12 @@
 
 /* COLORS */
 
+body {font-family: 'Open Sans', sans-serif;}
+
+
+.div {
+ padding: 0px;}
+
 
 .white{
     color: #fff;}
@@ -19,26 +25,29 @@
     color: #337AB7;}
 
 
-/*
-
-
-
-
 .navbar-right{
     margin-right: 15px;}
 
+
+.navbar-text{
+    margin-left: 15px;}
+
+/*
 .jumbotron {
    font-family: 'Open Sans', sans-serif;
    /* margin-top: 50px;
-    margin-bottom: 40px; */
+    margin-bottom: 40px;
     padding-top: 50px;
-   background-image: url(../images/cat_bgrd.jpg);}
+   background-image: url(../images/cat_bgrd.jpg);}*/
 
 .btn-lg {
     font-size: 20px;}
 
+/*
 #admin {
- margin-top: 60px;}
+    margin-top: 60px;}
+*/
+
 
 #selected {
     border: 2px solid red;}
@@ -134,9 +143,10 @@
 .modal-footer{
     margin-bottom: -15px;}
 
-
+/*
 #hello {
     margin-top: 42px;}
+*/
 
 .bottom-align-text {
     position: absolute;
@@ -188,7 +198,7 @@
   background: rgba(0, 0, 0, 0.6);
   transition: opacity 200ms;
   opacity: 1;
-  z-index: 10000;
+  z-index: 100000;
   }
 
 
@@ -204,6 +214,17 @@
   box-shadow: 0px 0px 50px 5px black;
   }
 
+.moms-popup {
+   margin-top: 10%;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   background: #FFCD5B;
+   border-radius: 10px;
+   transition: all 1s ease-in-out;
+   box-shadow: 0px 0px 50px 5px white;
+   }
+
+
 .popup-header {
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -211,6 +232,16 @@
   padding-left: 20px;
   padding-right: 20px;
   }
+
+.moms-header {
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  font-size: 17px;}
+
 
 .popup-header h3 {
   margin-top: 0;
@@ -250,13 +281,37 @@
 
 .popup-footer {
   border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: rgb(229, 229, 229);
+  border-top-style: dashed;
+  border-top-color: white;
   padding-top: 15px;
   padding-left: 10px;
   padding-right: 10px;
   text-align: right;
   }
+
+.moms-footer {
+    border-top-width: 1px;
+    border-top-style: dashed;
+    border-top-color: white;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+    background-image: url(../images/duck.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+
+    }
+
+#lang {
+    margin-right: 10px;
+    background-color: #fcf8e3;}
+
+.active#lang {
+    background-color: #d9edf7;}
+
+
 
 /* .btn {
   margin-left: 10px;
@@ -267,3 +322,152 @@
     color: red}
 */
 
+/* MOMSAPP */
+
+.moms {
+    background-image: url(../images/035.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+    position: absolute;
+    height: 100%;
+    width: 100%
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+    }
+
+.moms-header {
+    background: #FFCD5B;
+    padding-top: 10px;
+    border-width: 0px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    }
+
+.kids-facilities {
+    color: grey;}
+
+.moms-icons {
+    font-size: 25px;
+    color: #9D333C;
+    vertical-align: middle;}
+
+.moms-content {
+    background-color: white;
+    padding: 0px;
+    text-align: center;}
+
+/*.facilities-icon {
+    background-color: white;
+    size: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    }
+*/
+
+
+.title {
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    color: #9D333C;
+    }
+
+
+#filter {
+    border-radius: 150px 150px 0px 0px;
+    background-color: #FFCD5B;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+
+.moms-filter {
+    padding: 10px 7% 10px 7%;
+    background: #FFCD5B;
+    text-align: left;}
+
+.moms-search {
+    padding: 20px 7% 20px 7%;}
+
+
+.facilities-icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0px 7px 7px 0px;
+    display: inline-block;
+    box-shadow: 2px 2px 2px #888888;
+    border: none;}
+
+.moms-fas-details {
+    margin: 0px;
+    margin-right: 10px;
+    padding: 0px;
+    max-width: 70px;
+    color: white;
+    text-align:  center;
+    font-size: 12px;
+    margin-bottom: 10px;}
+
+.facilities-icon > .moms-fas-details {
+    margin: 0px;}
+
+
+.facilities-icon:hover {
+    background-color: yellow;}
+
+.facilities-icon:active {
+    background-color: yellow;}
+
+.icon-smaller  {
+     width: 40px;
+     height: 40px;
+    }
+
+
+.sub-title {
+   text-align: left;
+   color: white;
+   font-size: 16px;
+   font-weight: 900;
+   padding: 0px 0px 15px 0px;}
+
+.links {
+   color: white;
+   font-size: 13px; }
+
+.moms-rating {
+    background-color: #FFCD5B;
+    padding: 10px 7% 10px 7%;
+    border-color: white;
+    border-width: 2px 0px 2px 0px;
+    text-align: left;
+    }
+
+.moms-popup-fas {
+    height: 100px;
+    margin: 0px;
+    padding: 0px 10px 10px 0px;
+    font-size: 12px;}
+
+
+.col-xs-7, .col-xs-5 {
+    padding: 0px;}
+
+
+.h4 {
+    text-align: left;}
+
+
+
+.moms-card {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
